@@ -1,0 +1,73 @@
+<!-- /snippets/hj-product-grid-item.liquid -->
+{% comment %}
+
+  This snippet is used to showcase each product during the loop,
+  'for product in collection.products' in collection.liquid.
+
+  A liquid variable (grid_item_width) is set just before the this
+  snippet is included to change the size of the container.
+  Once the variable is set on a page, all future instances of this
+  snippet will use that width. Overwrite the variable to adjust this.
+
+  Example
+    - assign grid_item_width = 'large--one-quarter medium--one-half'
+
+{% endcomment %}
+
+{% comment %}
+  Set the default grid_item_width if no variable is set
+{% endcomment %}
+{%- include 'global-variables' -%}
+
+{%- unless grid_item_width -%}
+  {%- assign grid_item_width = 'md-dn--one-half lg---up--one-third wd--one-third' -%}
+{%- endunless -%}
+
+{%- unless section_color -%}
+  {%- assign section_color = 'primary' -%}
+{%- endunless -%}
+
+{%- comment -%}
+  Check if the product is on sale and set a variable to be used below.
+{%- endcomment -%}
+{%- assign on_sale = false -%}
+{%- if product.compare_at_price > product.price -%}
+  {%- assign on_sale = true -%}
+{%- endif -%}
+
+{%- comment -%}
+  Check if the product is sold out and set a variable to be used below.
+{%- endcomment -%}
+{%- assign sold_out = true -%}
+{%- if product.available -%}
+  {%- assign sold_out = false -%}
+{%- endif -%}
+
+{%- comment -%}
+  Assign a variant to show unit prices.
+{%- endcomment -%}
+
+
+{%- assign preview_image = product.featured_media.preview_image -%}
+{% if preview_image %}
+
+  <div class="hj-product-grid-item relative" style="z-index:2;">
+    <a href="{{ product.url | within: collection }}" class="">
+      {% include 'responsive-image' with
+        image: preview_image
+        max_width: 2000,
+        max_height: 2000
+      %}
+      <div class="hj-product-grid-item__overlay-background"></div>
+      <div class="hj-product-grid-item__text">
+        <h4 class="hj-product-grid-item__title">
+          Shop
+        </h4>
+        <p class="hj-product-grid-item__subtitle">
+          {{ product.title }}
+        </p>
+      </div>
+    </a>
+  </div>
+{% endif %}
+

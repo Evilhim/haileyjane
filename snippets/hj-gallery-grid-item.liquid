@@ -1,0 +1,47 @@
+<!-- /snippets/hj-gallery-grid-item.liquid -->
+{% comment %}
+
+  This snippet is used to showcase each product during the loop,
+  'for product in collection.products' in collection.liquid.
+
+  A liquid variable (grid_item_width) is set just before the this
+  snippet is included to change the size of the container.
+  Once the variable is set on a page, all future instances of this
+  snippet will use that width. Overwrite the variable to adjust this.
+
+  Example
+    - assign grid_item_width = 'large--one-quarter medium--one-half'
+
+{% endcomment %}
+
+{% comment %}
+  Set the default grid_item_width if no variable is set
+{% endcomment %}
+{%- include 'global-variables' -%}
+
+{%- unless grid_item_width -%}
+  {%- assign grid_item_width = 'md-dn--one-half lg---up--one-third wd--one-third' -%}
+{%- endunless -%}
+
+
+{% if block %}
+{% assign image = block.settings.image %}
+  <div class="hj-product-grid-item relative" style="z-index:2;">
+    <a href="{{ block.settings.link-url }}" class="">
+      {% include 'responsive-image' with
+        image: image
+        max_width: 2000,
+        max_height: 2000
+      %}
+      <div class="hj-product-grid-item__overlay-background"></div>
+      <div class="hj-product-grid-item__text">
+        <h4 class="hj-product-grid-item__title">
+          {{ block.settings.title }}
+        </h4>
+        <p class="hj-product-grid-item__subtitle">
+          {{ block.settings.subtitle }}
+        </p>
+      </div>
+    </a>
+  </div>
+{% endif %}
