@@ -6310,3 +6310,35 @@ Hailey Jane Custom Sections & Styles
     opacity: 1;
   }
 }
+
+/* =======================================================================
+
+Hailey Jane Custom Process
+========================================================================== */
+
+.hj-custom-item {
+  border: 1px solid pink;
+  display: flex !important;
+  align-items: flex-start;
+  align-items: center;
+  padding: 0;
+  height: 300px;
+  @include media-query($medium-up) {
+    height: 500px;
+  }
+}
+
+.hj-custom-item-container {
+  &.hide-mobile {
+    display: none !important;
+    @include media-query($medium-up) {
+      display: block !important;
+    }
+  }
+  &.hide-desktop {
+    display: block !important;
+    @include media-query($medium-up) {
+      display: none !important;
+    }
+  }
+}

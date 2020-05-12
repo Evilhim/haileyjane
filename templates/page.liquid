@@ -1,1 +1,17 @@
-{% section 'page-template' %}
+{% if page.title == "The Custom Process" %}
+    <div class="page-custom max-site-width px2 lg--up--px3" style="text-align:center">
+        <div class="header-block">
+            <h1>The Custom Process</h1>
+            <h3>5 steps to magic .... </h3>
+        </div>
+    </div>
+    {% section 'hj-custom-cascade' %}
+    <div class="page-custom max-site-width px2 lg--up--px3" style="text-align:center">
+        <div class="contact-block">
+            <h3>See something that you like?? Click to learn more</h3>
+            <h3>More text goes here</h3>
+        </div>
+    </div>
+{% else %}
+    {% section 'page-template' %}
+{% endif %}

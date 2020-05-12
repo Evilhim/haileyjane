@@ -1,0 +1,161 @@
+<section class="cascade {{ global__section_with_padding_class }} color--{{ section_color }}-text bg--{{ section_color }}-background" data-section-type="cascade" data-section-id="{{ section.id }}" data-fade-in="{{ fade_in }}" data-first-item="{{ section.settings.first_item }}">
+  <div class="max-site-width px2 lg--up--px3">
+    <div class="cascading-content">
+      <div class="items overflow--hidden">
+        <div class="item-sizer"></div>
+        <div class="column-sizer"></div>
+
+        {%- assign col_count_desktop = '' -%}
+        {%- assign col_count_mobile = '' -%}
+
+        {%- for block in section.blocks -%}
+
+          {%- assign first_col_desktop = false -%}
+          {%- assign first_col_mobile = false -%}
+
+          {%- assign block_width_mobile = block.settings.block_width_mobile -%}
+          {%- assign block_width_desktop = block.settings.block_width -%}
+
+          {% comment %}
+          First check if it's the first post of the loop and it isn't full width %}
+          {% endcomment %}
+          {%- if forloop.first and block_width_desktop == 'half' -%}
+            {%- assign first_col_desktop = true -%}
+            {%- assign col_count_desktop = 1 -%}
+          {%- endif -%}
+
+          {%- if forloop.first and block_width_mobile == 'half' -%}
+            {%- assign first_col_mobile = true -%}
+            {%- assign col_count_mobile = 1 -%}
+          {%- endif -%}
+
+          {% comment %}
+          Now check to see if last block is full width, and this block isn't.
+          {% endcomment %}
+          {%- if last_block_width_desktop == 'full' and block_width_desktop == 'half' -%}
+            {%- assign first_col_desktop = true -%}
+            {%- assign col_count_desktop = 1 -%}
+          {%- endif -%}
+
+          {%- if last_block_width_mobile == 'full' and block_width_mobile == 'half' -%}
+            {%- assign first_col_mobile = true -%}
+            {%- assign col_count_mobile = 1 -%}
+          {%- endif -%}
+
+
+          {% comment %}
+          Assign class for last item
+          {% endcomment %}
+          {%- if forloop.last -%}
+            {%- assign last_col = true -%}
+          {%- endif -%}
+
+          {% comment %}
+            Hide Images on Mobile or Desktop to achieve the correct order of steps
+          {% endcomment %}
+          {% if block.settings.hide_image == "mobile" %}
+              {% assign hide_image_class = "hide-mobile" %}
+          {% elsif block.settings.hide_image == "desktop" %}
+              {% assign hide_image_class = "hide-desktop" %}
+          {% else %}
+            {% assign hide_image_class = nil %}
+          {% endif %}
+
+          <div class="hj-custom-item-container {{hide_image_class}}">
+            <div
+            class="hj-custom-item item item--desktop--{{ block_width_desktop }} item--mobile--{{ block_width_mobile }} item--{{ block.id }} {% if forloop.first %}item--first{% endif %} {% if first_col_desktop %}first-col--desktop{% endif %} {% if first_col_mobile %}first-col--mobile{% endif %} {% if last_col %}item--last{% endif %} {% if fade_in%}fade-in{% endif %}"
+            >
+              <div class="item__inner {% if block_width_mobile == 'full' %}five-sixths mx--auto{% endif %} {% if block_width_desktop == 'full' %}lg--up--five-sixths lg--up--mx--auto{% else %}lg--up--one-whole{% endif %}" {{ block.shopify_attributes }}>
+                {% comment %}
+                /* ============================================================================
+                  Image
+                ============================================================================== *
+                {% endcomment %}
+                {% if block.type == 'image' %}
+                {% if block.settings.image %}
+                {% assign image = block.settings.image %}
+                {% assign image_ratio = block.settings.image.aspect_ratio  | plus: 0 %}
+                    <div class="image-holder {% if col_count_mobile == 2 or col_count_mobile == 3 %}seven-eighths mx--auto{% endif %} lg--up--five-sixths lg--up--mx--auto">
+
+                      {% include 'responsive-image' with
+                        image: image,
+                        max_width: 2000,
+                        max_height: 2000
+                      %}
+
+                    </div>
+                  {% else %}
+                    <div class="onboarding-image">
+                      <div class="placeholder-img-wrapper {{ placeholder_bg }}">
+                        <div style="padding-top:{% cycle '66.6', '133.33', '100' %}%;" class="relative">
+                          {{ 'image' | placeholder_svg_tag }}
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endif %}
+
+                {% comment %}
+                /* ============================================================================
+                  Rich Text
+                ============================================================================== *
+                {% endcomment %}
+                {% if block.type == 'rich_text' or block.type == 'heading' or block.type == 'text' %}
+                <div class="rich-text rich-text--{{ block.id }} {{ block.settings.text_align}}" style="border:1px solid peachpuff;">
+                  <div class="seven-eighths mx--auto pm--three-quarters wd--two-thirds">
+                    {% if block.settings.heading != blank   %}
+                      {% if block_width_mobile == 'full' %}
+                        {% assign heading_class = heading_fontsize__mobile_full %}
+                      {% else %}
+                        {% assign heading_class = heading_fontsize__mobile_half %}
+                      {% endif %}
+                      {% if block.type == 'heading' and block.settings.font_size == 'large' %}
+                        {% if block_width_mobile == 'full' %}
+                          {% assign heading_class = 'f--heading font-size--xxxl line-height--8 pm--font-size--xxxxxl pm--line-height--11 wd--font-size--xxxxxxl wd--line-height--13' %}
+                        {% else %}
+                          {% assign heading_class = 'f--heading font-size--xxl line-height--7 pm--font-size--xxxxl pm--line-height--11 wd--font-size--xxxxxxl wd--line-height--13' %}
+                        {% endif %}
+                      {% endif %}
+                      <h2 class="m0 {{ heading_class }}">
+                        {{ block.settings.heading }}
+                      </h2>
+                      <h4 class="richtext {{ font_size }}">
+                        {{ block.settings.subheading }}
+                      </4>
+                    {% endif %}
+                    {% if block.settings.rich_text != blank  %}
+                    <div class="richtext {{ font_size }} {% if block.settings.heading != blank %}mt2{% endif %}">
+                      {{ block.settings.rich_text }}
+                    </div>
+                    {% endif %}
+                    {% if block.settings.cta_url != blank %}
+                    <a class="inline-block {{ global__homepage_more_link }} {{ font_size }}  {{ global__link_underline }} {{ global__hover_underline }}" href="{{ block.settings.cta_url }}" >
+                      {{ block.settings.cta_text }}
+                    </a>
+                    {% endif %}
+                  </div>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+          {%- assign last_block_width_desktop = block_width_desktop -%}
+          {%- assign last_block_width_mobile = block_width_mobile -%}
+          {%- assign col_count_desktop = col_count_desktop | plus: 1 -%}
+          {%- assign col_count_mobile = col_count_mobile | plus: 1 -%}
+
+          {%- if col_count_desktop == 5 -%}
+            {%- assign col_count_desktop = 1 -%}
+          {%- endif -%}
+
+          {%- if col_count_mobile == 5 -%}
+            {%- assign col_count_mobile = 1 -%}
+          {%- endif -%}
+
+        {%- endfor -%}
+
+      </div>
+    </div>
+  </div>
+</section>

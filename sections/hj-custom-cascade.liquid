@@ -1,0 +1,145 @@
+{%- assign section_color = section.settings.color_scheme -%}
+{%- include 'global-variables' -%}
+
+{%- assign font_size = 'font-size--sm md--up--font-size--m line-height--3' -%}
+{%- assign font_size = global__basic_font_size -%}
+
+{% include 'hj-cascade' %}
+
+{% schema %}
+{
+  "name": "HJ Custom Process",
+  "settings": [
+    {
+       "type": "select",
+       "id": "first_item",
+       "label": "First block position",
+       "options": [
+          { "value": "left", "label": "Top left"},
+          { "value": "right ", "label": "Top right"}
+       ]
+    },
+    {
+       "type": "select",
+       "id": "color_scheme",
+       "label": "Color scheme",
+       "options": [
+          { "value": "primary", "label": "Primary"},
+          { "value": "secondary ", "label": "Secondary"},
+          { "value": "tertiary", "label": "Tertiary"}
+       ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+          {
+            "type": "select",
+            "id": "hide_image",
+            "label": "Where to hide image",
+            "options": [
+              { "value": "none", "label": "None"},
+              { "value": "mobile", "label": "Hide on Mobile"},
+              { "value": "desktop ", "label": "Hide on Desktop"}
+            ]
+          },
+          {
+            "type": "select",
+            "id": "step",
+            "label": "Custom Step",
+            "options": [
+              { "value": "1", "label": "One"},
+              { "value": "2", "label": "Two"},
+              { "value": "3", "label": "Three"},
+              { "value": "4", "label": "Four"},
+              { "value": "5", "label": "Five"}
+            ]
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "header",
+            "content": "Size"
+          },
+          {
+            "type": "select",
+            "id": "block_width_mobile",
+            "options": [
+              { "value": "half", "label": "Half width"},
+              { "value": "full", "label": "Full width"}
+            ],
+            "label": "Mobile"
+          },
+          {
+            "type": "select",
+            "id": "block_width",
+            "options": [
+              { "value": "half", "label": "Half width"},
+              { "value": "full", "label": "Full width"}
+            ],
+            "label": "Desktop"
+          }
+      ]
+    },
+    {
+      "type": "rich_text",
+      "name": "Heading with text",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Heading"
+        },
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Heading",
+          "default": "STEP ONE"
+        },
+        {
+          "id": "subheading",
+          "type": "text",
+          "label": "Subheading",
+          "default": "Summary of this step"
+        },
+        {
+          "type": "header",
+          "content": "Text"
+        },
+        {
+          "id": "rich_text",
+          "type": "richtext",
+          "label": "Text",
+          "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+        },
+         {
+           "type": "header",
+           "content": "Size"
+         },
+         {
+           "type": "select",
+           "id": "block_width_mobile",
+           "options": [
+             { "value": "half", "label": "Half width"},
+             { "value": "full", "label": "Full width"}
+           ],
+           "label": "Mobile"
+         },
+         {
+           "type": "select",
+           "id": "block_width",
+           "options": [
+             { "value": "half", "label": "Half width"},
+             { "value": "full", "label": "Full width"}
+           ],
+           "label": "Desktop"
+         }
+      ]
+    }
+  ]
+}
+{% endschema %}
