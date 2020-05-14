@@ -29,7 +29,7 @@
             {% endif %}
             {% assign count = count | plus: 1 %}
           {% endfor %}
-          <div class="collection__sticky-tags grid__item lg--up--one-seventh {% unless expanded %}lg--up--sticky{% endunless %} top--0 {{ global__basic_font_size }} {% if sorting_enabled == false %}md--dn--hide{% endif %}">
+          <div class="grid__item lg--up--one-seventh {% unless expanded %}lg--up--sticky{% endunless %} top--0 {{ global__basic_font_size }} {% if sorting_enabled == false %}md--dn--hide{% endif %}">
             <a class="lg--up--hide p1 inline-block mxn1 mb1 pointer color--{{ section_color }}-text" data-tag-filter-mobile-trigger>
               <div class="inline-block">
               {{ 'collections.general.filter' | t }}
@@ -39,7 +39,7 @@
               </span>
               </div>
             </a>
-            <ul class="list--reset m0 mtn1 pb3 lg--up--pb0 lg--up--pt3 md--dn--hide {{ global__basic_font_size }} {% if section.settings.capitalize_tags %}capitalize{% endif %}" data-tag-list>
+            <ul class="list--reset m0 pb3 lg--up--pb0 lg--up--pt1 md--dn--hide {{ global__basic_font_size }} {% if section.settings.capitalize_tags %}capitalize{% endif %}" data-tag-list>
               {% include 'collection__tag-items' %}
             </ul>
           </div>
@@ -50,7 +50,7 @@
             {% if layout == 'grid' %}
               {% include 'collection__grid-products' %}
             {% else %}
-              {% include 'collection__list-products' %}
+              {% include 'hj-collection__list-products' %}
             {% endif %}
           {% else %}
             <p class="mt2">{{ 'collections.general.no_matches' | t }}</p>

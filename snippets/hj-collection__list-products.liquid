@@ -1,0 +1,12 @@
+<div class="hj-collection-container">
+  {% for product in collection.products %}
+
+  <div class="hj-collection-item">
+    {% include 'product-grid-item', text_color: section.settings.section_color %}
+  </div>
+
+  {% endfor %}
+</div>
+
+
+

@@ -6342,3 +6342,27 @@ Hailey Jane Custom Process
     }
   }
 }
+
+
+/* =======================================================================
+
+Hailey Jane Collections
+========================================================================== */
+
+.hj-collection-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -10px;
+  @include media-query($medium-up) {
+    margin: -20px;
+  }
+}
+
+.hj-collection-item {
+  padding: 10px;
+  flex: 0 1 50%;
+  @include media-query($medium-up) {
+    flex: 0 1 25%;
+    padding: 20px;
+  }
+}

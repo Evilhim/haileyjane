@@ -1,3 +1,5 @@
+{%- include 'global-variables' -%}
+
 {% if page.title == "The Custom Process" %}
     <div class="page-custom max-site-width px2 lg--up--px3" style="text-align:center">
         <div class="header-block">
@@ -12,6 +14,12 @@
             <h3>More text goes here</h3>
         </div>
     </div>
+{% elsif page.title == "What is Custom? Test" %}
+<section class="page {{ global__section_with_padding_class }}">
+  <div class="max-site-width px2 lg--up--px3">
+    {% include 'hj-page-template' %}
+  </div>
+</section>
 {% else %}
     {% section 'page-template' %}
 {% endif %}

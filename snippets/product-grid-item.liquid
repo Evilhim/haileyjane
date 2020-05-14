@@ -105,11 +105,11 @@
   {% endunless %}
   <p class="color--{{ section_color }}-text m0 mt2 {{ global__basic_font_size }}">{{ product.title }}</p>
   {% if settings.products_show_vendor and product.vendor != blank %}
-  <p class="color--{{ section_color }}-meta m0 {{ global__basic_font_size }}">{{ product.vendor }}</p>
+  <p class="color--{{ section_color }}-text m0 {{ global__basic_font_size }}">{{ product.vendor }}</p>
   {% endif %}
-  <p class="{% if on_sale %}color--{{ section_color }}-accent{% else %}color--{{ section_color }}-meta{% endif %} m0  {{ global__basic_font_size }}">
+  <p class="color--{{ section_color }}-text m0 {{ global__basic_font_size }}">
     {% if sold_out %}
-      <span class="sold-out color--{{ section_color }}-meta {% if on_sale %}mr1{% endif %}">{{ 'products.product.sold_out' | t }}</span>
+      <span class="sold-out color--{{ section_color }}-text {% if on_sale %}mr1{% endif %}">{{ 'products.product.sold_out' | t }}</span>
     {% else %}
       <span {% if on_sale %}class="mr1"{% endif %}>
         {% if on_sale %}
@@ -133,6 +133,7 @@
       <s class="color--{{ section_color }}-meta">{{ product.compare_at_price | money }}</s>
     {% endif %}
   </p>
+
   <p class="{% if on_sale %}color--{{ section_color }}-accent{% else %}color--{{ section_color }}-meta{% endif %} m0  {{ global__small_font_size }}" data-unit-price-wrapper>
     <span data-unit-price>
       {{- current_variant.unit_price | money -}}
