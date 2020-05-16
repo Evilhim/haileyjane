@@ -83,9 +83,9 @@
   {% endif %}
 {% endif %}
 
-
-<div data-section-id="{{ section.id }}" data-section-type="header"  data-template="{{ template.name }}" {{ sticky_data }} {{ sticky_header_banner }} {% if banner_alternate_logo_enabled %}data-banner-logo-image-enabled="true"{% endif %}>
-
+<!-- Removing Sticky Property for Homepage -->
+<!-- <div data-section-id="{{ section.id }}" data-section-type="header"  data-template="{{ template.name }}" {{ sticky_data }} {{ sticky_header_banner }} {% if banner_alternate_logo_enabled %}data-banner-logo-image-enabled="true"{% endif %}> -->
+<div data-section-id="{{ section.id }}" data-section-type="header"  data-template="{{ template.name }}" {% if template.name != 'index' %}{{ sticky_data }}{{ sticky_header_banner }} {% endif %}{% if banner_alternate_logo_enabled %}data-banner-logo-image-enabled="true"{% endif %}>
   {% unless banner_enabled  %}
   <div class="header-placeholder full--w hide" data-header-placeholder></div>
   {% endunless %}
@@ -95,7 +95,7 @@
 
       <div class="max-site-width px2 lg--up--px3">
         <div class="relative">
-          <a class="header__close fixed lg-up--full--w text-align--right top--0 right--0 p2 font-size--m pointer color--active-text hv--active-accent" data-close-header tabindex="0">
+          <a class="header__close fixed lg-up--full--w text-align--right top--0 right--0 p2 font-size--ml pointer color--active-text hv--active-accent" data-close-header tabindex="0">
             {% include 'svg' | icon: 'icon-close' %}
           </a>
         </div>
@@ -121,7 +121,7 @@
 
       <!-- <div class="header__shifter full--w"></div> -->
 
-        <div class="header-table flex items--center justify--between full--w px2 py3 max-site-width lg--up--px3  lg--up--relative">
+        <div class="hj-header header-table flex items--center justify--between full--w px2 py3 max-site-width lg--up--px3  lg--up--relative {% if template.name != 'index' %}hj-header--bg-white{% endif %}">
           <div class="header-table__bookend align--middle text-align--left lg--up--hide md--dn--flex--1-basis-0">
             <div class="js">
               {% if section.settings.show_menu_icon == false and linklists[section.settings.main_linklist].links != blank and linklists[section.settings.main_linklist].links.size == 1 %}
@@ -275,7 +275,7 @@
         </div>
     </div>
 
-    {% include 'header-active' %}
+    {% include 'hj-header-active' %}
 
     <div class="header__active-overlay" data-header-overlay></div>
 

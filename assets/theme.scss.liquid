@@ -2947,8 +2947,13 @@ h6 {
 
 .t--header-navigation {
   font-family: $header-navigation-typeface;
+  // font-family: $accent-font-stack;
   text-transform: $header-navigation-text-transform;
   font-weight: $header-navigation-font-weight;
+}
+
+.t--header-navigation--bold {
+  font-weight: 600;
 }
 
 .t--list-and-grid {
@@ -5280,6 +5285,9 @@ Header Active (Modal)
 
 .site-header.full-height {
   height: 100vh;
+  @include media-query($large-up) {
+    height: unset;
+  }
 }
 
 .site-header {
@@ -5294,9 +5302,10 @@ Header Active (Modal)
   }
 }
 
+// Changes to height on desktop by KO
 
 .site-header.active {
-  background-color: $active-background;
+  background-color: $color-secondary-background; // Keep only for mobile
   color: $active-text;
   overflow-y: scroll;
   position: fixed;
@@ -5306,6 +5315,8 @@ Header Active (Modal)
   left: 0;
 
   @include media-query($large-up) {
+    background-color: #FFF;
+    height: unset;
     .header__shifter {
       height: 43px;
     }
@@ -5321,6 +5332,8 @@ Header Active (Modal)
     display: block;
     transition: all 0.2s cubic-bezier(0.46, 0.01, 0.32, 1);
     svg {
+      width:1rem;
+      height: 1rem;
       transition: all 0.2s cubic-bezier(0.46, 0.01, 0.32, 1);
     }
   }
@@ -6366,3 +6379,24 @@ Hailey Jane Collections
     padding: 20px;
   }
 }
+
+/* =======================================================================
+
+Hailey Jane Nav
+========================================================================== */
+
+
+.hj-header-menu {
+  @include media-query($large-up) {
+    border-bottom: 0.5px solid $color-secondary-background;
+  }
+}
+
+.hj-nav-item {
+  min-width:50%;
+  @include media-query($post-mobile) {
+    min-width: 25%;
+  }
+}
+
+// $post-mobile
