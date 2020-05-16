@@ -1034,9 +1034,9 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
    *
    * @namespace a11y
    */
-  
+
   slate.a11y = {
-  
+
     /**
      * For use when focus shifts to a container rather than a link
      * eg for In-page links, after scroll, focus shifts to content area so that
@@ -1046,32 +1046,32 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
      */
     pageLinkFocus: function($element) {
       var focusClass = 'js-focus-hidden';
-  
+
       $element.first()
         .attr('tabIndex', '-1')
         .focus()
         .addClass(focusClass)
         .one('blur', callback);
-  
+
       function callback() {
         $element.first()
           .removeClass(focusClass)
           .removeAttr('tabindex');
       }
     },
-  
+
     /**
      * If there's a hash in the url, focus the appropriate element
      */
     focusHash: function() {
       var hash = window.location.hash;
-  
+
       // is there a hash in the url? is it an element on the page?
       if (hash && document.getElementById(hash.slice(1))) {
         this.pageLinkFocus($(hash));
       }
     },
-  
+
     /**
      * When an in-page (url w/hash) link is clicked, focus the appropriate element
      */
@@ -1080,7 +1080,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         this.pageLinkFocus($(evt.currentTarget.hash));
       }.bind(this));
     },
-  
+
     /**
      * Traps the focus in a particular container
      *
@@ -1093,21 +1093,21 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       var eventName = options.namespace
         ? 'focusin.' + options.namespace
         : 'focusin';
-  
+
       if (!options.$elementToFocus) {
         options.$elementToFocus = options.$container;
       }
-  
+
       options.$container.attr('tabindex', '-1');
       options.$elementToFocus.focus();
-  
+
       $(document).on(eventName, function(evt) {
         if (options.$container[0] !== evt.target && !options.$container.has(evt.target).length) {
           options.$container.focus();
         }
       });
     },
-  
+
     /**
      * Removes the trap of focus in a particular container
      *
@@ -1119,37 +1119,37 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       var eventName = options.namespace
         ? 'focusin.' + options.namespace
         : 'focusin';
-  
+
       if (options.$container && options.$container.length) {
         options.$container.removeAttr('tabindex');
       }
-  
+
       $(document).off(eventName);
     }
   };
-  
+
   /*============================================================================
     Ajax the add to cart experience by revealing it in a side drawer
     Plugin Documentation - http://shopify.github.io/Timber/#ajax-cart
     (c) Copyright 2015 Shopify Inc. Author: Carson Shold (@cshold). All Rights Reserved.
-  
+
     This file includes:
       - Basic Shopify Ajax API calls
       - Ajax cart plugin
-  
+
     This requires:
       - jQuery 1.8+
       - handlebars.min.js (for cart template)
       - modernizer.min.js
       - snippet/ajax-cart-template.liquid
-  
+
     Customized version of Shopify's jQuery API
     (c) Copyright 2009-2015 Shopify Inc. Author: Caroline Schnapp. All Rights Reserved.
   ==============================================================================*/
   if (typeof ShopifyAPI === 'undefined') {
     ShopifyAPI = {};
   }
-  
+
   /*============================================================================
     API Helper Functions
   ==============================================================================*/
@@ -1162,7 +1162,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
     }
     return jQuery.trim(attribute);
   }
-  
+
   /*============================================================================
     Handlebars helper
   ==============================================================================*/
@@ -1173,14 +1173,14 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           return options.inverse(this);
        }
   });
-  
+
   /*============================================================================
     API Functions
   ==============================================================================*/
   ShopifyAPI.onCartUpdate = function() {
     // alert('There are now ' + cart.item_count + ' items in the cart.');
   };
-  
+
   ShopifyAPI.updateCartNote = function(note, callback) {
     var params = {
       type: 'POST',
@@ -1200,14 +1200,14 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
     };
     jQuery.ajax(params);
   };
-  
+
   ShopifyAPI.onError = function(XMLHttpRequest) {
     var data = eval('(' + XMLHttpRequest.responseText + ')');
     if (data.message) {
       alert(data.message + '(' + data.status + '): ' + data.description);
     }
   };
-  
+
   /*============================================================================
     POST to cart/add.js returns the JSON of the cart
       - Allow use of form element instead of just id
@@ -1247,7 +1247,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
     };
     jQuery.ajax(params);
   };
-  
+
   // Get from cart.js returns the cart in JSON
   ShopifyAPI.getCart = function(callback) {
     jQuery.getJSON('/cart.js', function(cart) {
@@ -1258,7 +1258,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       }
     });
   };
-  
+
   // POST to cart/change.js returns the cart in JSON
   ShopifyAPI.changeItem = function(line, quantity, callback) {
     var $body = $(document.body);
@@ -1286,26 +1286,26 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
     };
     jQuery.ajax(params);
   };
-  
+
   /*============================================================================
     Ajax Shopify Add To Cart
   ==============================================================================*/
   var ajaxCart = (function(module, $) {
     'use strict';
-  
+
     // Public functions
     var init, loadCart;
-  
+
     // Private general variables
     var settings, isUpdating, $body;
-  
+
     // Private plugin variables
     var $formContainer,
       $addToCart,
       $cartCountSelector,
       $cartCostSelector,
       $cartContainer;
-  
+
     // Private functions
     var updateCountPrice,
       formOverride,
@@ -1318,7 +1318,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       adjustCartCallback,
       qtySelectors,
       validateQty;
-  
+
     /*============================================================================
       Initialise the plugin and define global options
     ==============================================================================*/
@@ -1334,47 +1334,47 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         disableAjaxCart: false,
         enableQtySelectors: true
       };
-  
+
       // Override defaults with arguments
       $.extend(settings, options);
-  
+
       // Select DOM elements
       $formContainer = $(settings.formSelector);
       $cartContainer = $(settings.cartContainer);
       $addToCart = $formContainer.find(settings.addToCartSelector);
       $cartCountSelector = $(settings.cartCountSelector);
       $cartCostSelector = $(settings.cartCostSelector);
-  
+
       // General Selectors
       $body = $('body');
-  
+
       // Track cart activity status
       isUpdating = false;
-  
+
       // Setup ajax quantity selectors on the any template if enableQtySelectors is true
       if (settings.enableQtySelectors) {
         qtySelectors();
       }
-  
+
       // Take over the add to cart form submit action if ajax enabled
       if (!settings.disableAjaxCart && $addToCart.length) {
         formOverride();
       }
-  
+
       // Run this function in case we're using the quantity selector outside of the cart
       adjustCart();
     };
-  
+
     loadCart = function() {
       //var $body = $(document.body);
       $body.addClass('drawer--is-loading');
       ShopifyAPI.getCart(cartUpdateCallback);
     };
-  
+
     updateCountPrice = function(cart) {
       if ($cartCountSelector) {
         $cartCountSelector.html(cart.item_count).removeClass('hidden-count');
-  
+
         if (cart.item_count === 0) {
           $cartCountSelector.addClass('hidden-count');
         }
@@ -1385,17 +1385,17 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         );
       }
     };
-  
+
     formOverride = function() {
       $formContainer.on('submit', function(evt) {
         evt.preventDefault();
-  
+
         // Add class to be styled if desired
         $addToCart.removeClass('is-added').addClass('is-adding');
-  
+
         // Remove any previous quantity errors
         $('.qty-error').remove();
-  
+
         ShopifyAPI.addItemFromForm(
           evt.target,
           itemAddedCallback,
@@ -1403,17 +1403,17 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         );
       });
     };
-  
+
     itemAddedCallback = function() {
       $addToCart.removeClass('is-adding').addClass('is-added');
-  
+
       ShopifyAPI.getCart(cartUpdateCallback);
     };
-  
+
     itemErrorCallback = function(XMLHttpRequest) {
       var data = eval('(' + XMLHttpRequest.responseText + ')');
       $addToCart.removeClass('is-adding is-added');
-  
+
       if (data.message) {
         if (data.status === 422) {
           $formContainer.after(
@@ -1422,17 +1422,17 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         }
       }
     };
-  
+
     cartUpdateCallback = function(cart) {
       // Update quantity and price
       updateCountPrice(cart);
       buildCart(cart);
     };
-  
+
     buildCart = function(cart) {
       // Start with a fresh cart div
       $cartContainer.empty();
-  
+
       // Show empty cart
       if (cart.item_count === 0) {
         $cartContainer.append(
@@ -1446,14 +1446,14 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         cartCallback(cart);
         return;
       }
-  
+
       // Handlebars.js cart layout
       var items = [],
         item = {},
         data = {},
         source = $('#CartTemplate').html(),
         template = Handlebars.compile(source);
-  
+
       // Add each item to our handlebars.js data
       $.each(cart.items, function(index, cartItem) {
         /* Hack to get product image thumbnail
@@ -1471,7 +1471,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           prodImg =
             '//cdn.shopify.com/s/assets/admin/no-image-medium-cc9732cb976dd349a0df1d39816fbcc7.gif';
         }
-  
+
         if (cartItem.properties !== null) {
           $.each(cartItem.properties, function(key, value) {
             if (key.charAt(0) === '_' || !value) {
@@ -1479,12 +1479,12 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             }
           });
         }
-  
+
         if (cartItem.line_level_discount_allocations.length !== 0) {
           for (var discount in cartItem.line_level_discount_allocations) {
             var amount =
               cartItem.line_level_discount_allocations[discount].amount;
-  
+
             cartItem.line_level_discount_allocations[
               discount
             ].formattedAmount = slate.Currency.formatMoney(
@@ -1493,13 +1493,13 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             );
           }
         }
-  
+
         if (cart.cart_level_discount_applications.length !== 0) {
           for (var cartDiscount in cart.cart_level_discount_applications) {
             var cartAmount =
               cart.cart_level_discount_applications[cartDiscount]
                 .total_allocated_amount;
-  
+
             cart.cart_level_discount_applications[
               cartDiscount
             ].formattedAmount = slate.Currency.formatMoney(
@@ -1508,7 +1508,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             );
           }
         }
-  
+
         // Create item's data object and add to 'items' array
         item = {
           key: cartItem.key,
@@ -1533,7 +1533,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             cartItem.line_level_discount_allocations.length === 0 ? false : true,
           vendor: cartItem.vendor
         };
-  
+
         if (cartItem.unit_price_measurement) {
           item.unitPrice = slate.Currency.formatMoney(
             cartItem.unit_price,
@@ -1543,10 +1543,10 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           item.unitPriceMeasurementReferenceValue = cartItem.unit_price_measurement.reference_value;
           item.unitPriceMeasurementReferenceUnit = cartItem.unit_price_measurement.reference_unit;
         }
-  
+
         items.push(item);
       });
-  
+
       // Gather all cart data and add to DOM
       data = {
         items: items,
@@ -1559,30 +1559,30 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         cartDiscountsApplied:
           cart.cart_level_discount_applications.length === 0 ? false : true
       };
-  
+
       $cartContainer.append(template(data));
-  
+
       cartCallback(cart);
     };
-  
+
     cartCallback = function(cart) {
       $body.removeClass('drawer--is-loading');
       $body.trigger('ajaxCart.afterCartLoad', cart);
-  
+
       if (window.Shopify && Shopify.StorefrontExpressButtons) {
         Shopify.StorefrontExpressButtons.initialize();
       }
     };
-  
+
     adjustCart = function() {
       // Delegate all events because elements reload with the cart
-  
+
       // Add or remove from the quantity
       $body.on('click', '.ajaxcart__qty-adjust', function() {
         if (isUpdating) {
           return;
         }
-  
+
         var $el = $(this);
         var line;
         var $qtySelector;
@@ -1594,9 +1594,9 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           line = $el.data('line'),
           $qtySelector = $el.parents('.ajax-qty').find('.ajaxcart__qty-num'),
           qty = parseInt($qtySelector.val().replace(/\D/g, ''));
-  
+
           qty = validateQty(qty);
-  
+
           // Add or subtract from the current quantity
           if ($el.hasClass('ajaxcart__qty--plus')) {
             qty += 1;
@@ -1605,7 +1605,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             if (qty <= 0) qty = 0;
           }
         }
-  
+
         // If it has a data-line, update the cart.
         // Otherwise, just update the input's number
         if (line) {
@@ -1614,7 +1614,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           $qtySelector.val(qty);
         }
       });
-  
+
       // Update quantity based on input on change
       $body.on('change', '.ajaxcart__qty-num', function() {
         if (isUpdating) {
@@ -1623,22 +1623,22 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         var $el = $(this),
           line = $el.data('line'),
           qty = parseInt($el.val().replace(/\D/g, ''));
-  
+
         qty = validateQty(qty);
-  
+
         // If it has a data-line, update the cart
         if (line) {
           updateQuantity(line, qty);
         }
       });
-  
+
       // Prevent cart from being submitted while quantities are changing
       $body.on('submit', 'form.ajaxcart', function(evt) {
         if (isUpdating) {
           evt.preventDefault();
         }
       });
-  
+
       // Highlight the text when focused
       $body.on('focus', '.ajaxcart__qty-adjust', function() {
         var $el = $(this);
@@ -1646,61 +1646,61 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           $el.select();
         }, 50);
       });
-  
+
       function updateQuantity(line, qty) {
         isUpdating = true;
-  
+
         // Add activity classes when changing cart quantities
         var $row = $('.ajaxcart__row[data-line="' + line + '"]').addClass(
           'is-loading'
         );
-  
+
         if (qty === 0) {
           $row.parent().addClass('is-removed');
         }
-  
+
         // Slight delay to make sure removed animation is done
         setTimeout(function() {
           ShopifyAPI.changeItem(line, qty, adjustCartCallback);
         }, 250);
       }
-  
+
       // Save note anytime it's changed
       $body.on('change', 'textarea[name="note"]', function() {
         var newNote = $(this).val();
-  
+
         // Update the cart note in case they don't click update/checkout
         ShopifyAPI.updateCartNote(newNote, function() {});
       });
     };
-  
+
     adjustCartCallback = function(cart) {
       // Update quantity and price
       updateCountPrice(cart);
-  
+
       // Reprint cart on short timeout so you don't see the content being removed
       setTimeout(function() {
         ShopifyAPI.getCart(buildCart);
         isUpdating = false;
       }, 150);
     };
-  
+
     qtySelectors = function() {
       // Change number inputs to JS ones, similar to ajax cart but without API integration.
       // Make sure to add the existing name and id to the new input element
       var $numInputs = $('input[type="number"]');
-  
+
       if ($numInputs.length) {
         $numInputs.each(function() {
           var $el = $(this),
             currentQty = $el.val(),
             inputName = $el.attr('name'),
             inputId = $el.attr('id');
-  
+
           var itemAdd = currentQty + 1,
             itemMinus = currentQty - 1,
             itemQty = currentQty;
-  
+
           var source = $('#JsQty').html(),
             template = Handlebars.compile(source),
             data = {
@@ -1711,19 +1711,19 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
               inputName: inputName,
               inputId: inputId
             };
-  
+
           // Append new quantity selector then remove original
           $el.after(template(data)).remove();
         });
-  
+
         // Setup listeners to add/subtract from the input
         $('.js-qty__adjust').on('click', function() {
           var $el = $(this),
             $qtySelector = $el.siblings('.js-qty__num'),
             qty = parseInt($qtySelector.val().replace(/\D/g, ''));
-  
+
           qty = validateQty(qty);
-  
+
           // Add or subtract from the current quantity
           if ($el.hasClass('js-qty__adjust--plus')) {
             qty += 1;
@@ -1731,13 +1731,13 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             qty -= 1;
             if (qty <= 1) qty = 1;
           }
-  
+
           // Update the input's number
           $qtySelector.val(qty);
         });
       }
     };
-  
+
     validateQty = function(qty) {
       if (parseFloat(qty) === parseInt(qty) && !isNaN(qty)) {
         // We have a valid number!
@@ -1747,16 +1747,16 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       }
       return qty;
     };
-  
+
     module = {
       init: init,
       load: loadCart
     };
-  
+
     return module;
   })(ajaxCart || {}, jQuery);
-  
-  
+
+
   theme.watchQuantityInputs = function() {
     $(document).on('focus', '.ajaxcart__qty-num',  function(e){
       $('.btn__ajax-checkout').prop("disabled", true);
@@ -1765,8 +1765,8 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       $('.btn__ajax-checkout').prop("disabled", false);
     });
   };
-  
-  
+
+
   /**
    * Cart Template Script
    * ------------------------------------------------------------------------------
@@ -1774,16 +1774,16 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
    *
    * @namespace cart
    */
-  
+
   slate.cart = {
-    
+
     /**
      * Browser cookies are required to use the cart. This function checks if
      * cookies are enabled in the browser.
      */
     cookiesEnabled: function() {
       var cookieEnabled = navigator.cookieEnabled;
-  
+
       if (!cookieEnabled){
         document.cookie = 'testcookie';
         cookieEnabled = (document.cookie.indexOf('testcookie') !== -1);
@@ -1791,7 +1791,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       return cookieEnabled;
     }
   };
-  
+
   /**
    * Utility helpers
    * -----------------------------------------------------------------------------
@@ -1799,7 +1799,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
    *
    * @namespace utils
    */
-  
+
   slate.utils = {
     /**
      * Return an object from an array of objects that matches the provided key and value
@@ -1815,7 +1815,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         }
       }
     },
-  
+
     keyboardKeys: {
       TAB: 9,
       ENTER: 13,
@@ -1823,7 +1823,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       LEFTARROW: 37,
       RIGHTARROW: 39
     },
-  
+
     /**
      * Remove an object from an array of objects by matching the provided key and value
      *
@@ -1839,10 +1839,10 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           break;
         }
       }
-  
+
       return array;
     },
-  
+
     /**
      * _.compact from lodash
      * Remove empty/false items from array
@@ -1855,7 +1855,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       var length = array == null ? 0 : array.length;
       var resIndex = 0;
       var result = [];
-  
+
       while (++index < length) {
         var value = array[index];
         if (value) {
@@ -1864,7 +1864,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       }
       return result;
     },
-  
+
     /**
      * _.defaultTo from lodash
      * Checks `value` to determine whether a default value should be returned in
@@ -1880,7 +1880,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       return value == null || value !== value ? defaultValue : value;
     }
   };
-  
+
   theme.text_truncate = function(str, length, ending) {
     if (length == null) {
       length = 200;
@@ -1894,7 +1894,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       return str;
     }
   };
-  
+
   theme.productGridItems = function() {
     $(".product-grid-item").on({
       mouseenter: function () {
@@ -1905,7 +1905,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       }
     });
   };
-  
+
   /**
    * Rich Text Editor
    * -----------------------------------------------------------------------------
@@ -1913,7 +1913,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
    *
    * @namespace rte
    */
-  
+
   slate.rte = {
     /**
      * Wrap tables in a container div to make them scrollable when needed
@@ -1924,10 +1924,10 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
      */
     wrapTable: function(options) {
       var tableWrapperClass = typeof options.tableWrapperClass === "undefined" ? '' : options.tableWrapperClass;
-  
+
       options.$tables.wrap('<div class="' + tableWrapperClass + '"></div>');
     },
-  
+
     /**
      * Wrap iframes in a container div to make them responsive
      *
@@ -1937,11 +1937,11 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
      */
     wrapIframe: function(options) {
       var iframeWrapperClass = typeof options.iframeWrapperClass === "undefined" ? '' : options.iframeWrapperClass;
-  
+
       options.$iframes.each(function() {
         // Add wrapper to make video responsive
         $(this).wrap('<div class="' + iframeWrapperClass + '"></div>');
-        
+
         // Re-set the src attribute on each iframe after page load
         // for Chrome's "incorrect iFrame content on 'back'" bug.
         // https://code.google.com/p/chromium/issues/detail?id=395791
@@ -1950,11 +1950,11 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       });
     }
   };
-  
+
   slate.Sections = function Sections() {
     this.constructors = {};
     this.instances = [];
-  
+
     $(document)
       .on('shopify:section:load', this._onSectionLoad.bind(this))
       .on('shopify:section:unload', this._onSectionUnload.bind(this))
@@ -1964,103 +1964,103 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       .on('shopify:block:select', this._onBlockSelect.bind(this))
       .on('shopify:block:deselect', this._onBlockDeselect.bind(this));
   };
-  
+
   slate.Sections.prototype = $.extend({}, slate.Sections.prototype, {
     _createInstance: function(container, constructor) {
       var $container = $(container);
       var id = $container.attr('data-section-id');
       var type = $container.attr('data-section-type');
-  
+
       constructor = constructor || this.constructors[type];
-  
+
       if (typeof constructor === 'undefined') {
         return;
       }
-  
+
       var instance = $.extend(new constructor(container), {
         id: id,
         type: type,
         container: container
       });
-  
+
       this.instances.push(instance);
     },
-  
+
     _onSectionLoad: function(evt) {
       var container = $('[data-section-id]', evt.target)[0];
       if (container) {
         this._createInstance(container);
       }
-  
+
       var instance = slate.utils.findInstance(this.instances, 'id', evt.detail.sectionId);
       if (instance && typeof instance.onSectionLoad === 'function') {
         instance.onSectionLoad(evt);
       }
     },
-  
+
     _onSectionUnload: function(evt) {
       var instance = slate.utils.findInstance(this.instances, 'id', evt.detail.sectionId);
-  
+
       if (!instance) {
         return;
       }
-  
+
       if (typeof instance.onUnload === 'function') {
         instance.onUnload(evt);
       }
-  
+
       this.instances = slate.utils.removeInstance(this.instances, 'id', evt.detail.sectionId);
     },
-  
+
     _onSelect: function(evt) {
       var instance = slate.utils.findInstance(this.instances, 'id', evt.detail.sectionId);
-  
+
       if (instance && typeof instance.onSelect === 'function') {
         instance.onSelect(evt);
       }
     },
-  
+
     _onDeselect: function(evt) {
       var instance = slate.utils.findInstance(this.instances, 'id', evt.detail.sectionId);
-  
+
       if (instance && typeof instance.onDeselect === 'function') {
         instance.onDeselect(evt);
       }
     },
-  
+
     _onReorder: function(evt) {
       var instance = slate.utils.findInstance(this.instances, 'id', evt.detail.sectionId);
-  
+
       if (instance && typeof instance.onReorder === 'function') {
         instance.onReorder(evt);
       }
     },
-  
+
     _onBlockSelect: function(evt) {
       var instance = slate.utils.findInstance(this.instances, 'id', evt.detail.sectionId);
-  
+
       if (instance && typeof instance.onBlockSelect === 'function') {
         instance.onBlockSelect(evt);
       }
     },
-  
+
     _onBlockDeselect: function(evt) {
       var instance = slate.utils.findInstance(this.instances, 'id', evt.detail.sectionId);
-  
+
       if (instance && typeof instance.onBlockDeselect === 'function') {
         instance.onBlockDeselect(evt);
       }
     },
-  
+
     register: function(type, constructor) {
       this.constructors[type] = constructor;
-  
+
       $('[data-section-type=' + type + ']').each(function(index, container) {
         this._createInstance(container, constructor);
       }.bind(this));
     }
   });
-  
+
   /**
    * Currency Helpers
    * -----------------------------------------------------------------------------
@@ -2070,10 +2070,10 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
    * - formatMoney - Takes an amount in cents and returns it as a formatted dollar value.
    *
    */
-  
+
   slate.Currency = (function() {
     var moneyFormat = '${{amount}}';
-  
+
     /**
      * Format money values based on your shop currency settings
      * @param  {Number|string} cents - value in cents or dollar amount e.g. 300 cents
@@ -2088,25 +2088,25 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       var value = '';
       var placeholderRegex = /\{\{\s*(\w+)\s*\}\}/;
       var formatString = (format || moneyFormat);
-  
+
       function formatWithDelimiters(number, precision, thousands, decimal) {
         precision = slate.utils.defaultTo(precision, 2);
         thousands = slate.utils.defaultTo(thousands, ',');
         decimal = slate.utils.defaultTo(decimal, '.');
-  
+
         if (isNaN(number) || number == null) {
           return 0;
         }
-  
+
         number = (number / 100.0).toFixed(precision);
-  
+
         var parts = number.split('.');
         var dollarsAmount = parts[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1' + thousands);
         var centsAmount = parts[1] ? (decimal + parts[1]) : '';
-  
+
         return dollarsAmount + centsAmount;
       }
-  
+
       switch (formatString.match(placeholderRegex)[1]) {
         case 'amount':
           value = formatWithDelimiters(cents, 2);
@@ -2127,42 +2127,42 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           value = formatWithDelimiters(cents, 0, ' ');
           break;
       }
-  
+
       return formatString.replace(placeholderRegex, value);
     }
-  
+
     return {
       formatMoney: formatMoney
     };
   })();
-  
+
   /**
    * Image Helper Functions
    * -----------------------------------------------------------------------------
    * A collection of functions that help with basic image operations.
    *
    */
-  
+
   slate.Image = (function() {
-  
+
     /**
      * Preloads an image in memory and uses the browsers cache to store it until needed.
      *
      * @param {Array} images - A list of image urls
      * @param {String} size - A shopify image size attribute
      */
-  
+
     function preload(images, size) {
       if (typeof images === 'string') {
         images = [images];
       }
-  
+
       for (var i = 0; i < images.length; i++) {
         var image = images[i];
         this.loadImage(this.getSizedImageUrl(image, size));
       }
     }
-  
+
     /**
      * Loads and caches an image in the browsers cache.
      * @param {string} path - An image url
@@ -2170,7 +2170,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
     function loadImage(path) {
       new Image().src = path;
     }
-  
+
     /**
      * Find the Shopify image attribute size
      *
@@ -2179,14 +2179,14 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
      */
     function imageSize(src) {
       var match = src.match(/.+_((?:pico|icon|thumb|small|compact|medium|large|grande)|\d{1,4}x\d{0,4}|x\d{1,4})[_\.@]/);
-  
+
       if (match) {
         return match[1];
       } else {
         return null;
       }
     }
-  
+
     /**
      * Adds a Shopify size attribute to a URL
      *
@@ -2198,27 +2198,27 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       if (size === null) {
         return src;
       }
-  
+
       if (size === 'master') {
         return this.removeProtocol(src);
       }
-  
+
       var match = src.match(/\.(jpg|jpeg|gif|png|bmp|bitmap|tiff|tif)(\?v=\d+)?$/i);
-  
+
       if (match) {
         var prefix = src.split(match[0]);
         var suffix = match[0];
-  
+
         return this.removeProtocol(prefix[0] + '_' + size + suffix);
       } else {
         return null;
       }
     }
-  
+
     function removeProtocol(path) {
       return path.replace(/http(s)?:/, '');
     }
-  
+
     return {
       preload: preload,
       loadImage: loadImage,
@@ -2227,7 +2227,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       removeProtocol: removeProtocol
     };
   })();
-  
+
   /**
    * Variant Selection scripts
    * ------------------------------------------------------------------------------
@@ -2238,9 +2238,9 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
    *
    * @namespace variants
    */
-  
+
   slate.Variants = (function() {
-  
+
     /**
      * Variant constructor
      *
@@ -2253,12 +2253,12 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       this.originalSelectorId = options.originalSelectorId;
       this.enableHistoryState = options.enableHistoryState;
       this.currentVariant = this._getVariantFromOptions();
-  
+
       $(this.singleOptionSelector, this.$container).on('change', this._onSelectChange.bind(this));
     }
-  
+
     Variants.prototype = $.extend({}, Variants.prototype, {
-  
+
       /**
        * Get the currently selected options from add-to-cart form. Works with all
        * form input elements.
@@ -2270,12 +2270,12 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           var $element = $(element);
           var type = $element.attr('type');
           var currentOption = {};
-  
+
           if (type === 'radio' || type === 'checkbox') {
             if ($element[0].checked) {
               currentOption.value = $element.val();
               currentOption.index = $element.data('index');
-  
+
               return currentOption;
             } else {
               return false;
@@ -2283,17 +2283,17 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           } else {
             currentOption.value = $element.val();
             currentOption.index = $element.data('index');
-  
+
             return currentOption;
           }
         });
-  
+
         // remove any unchecked input values if using radio buttons or checkboxes
         currentOptions = slate.utils.compact(currentOptions);
-  
+
         return currentOptions;
       },
-  
+
       /**
        * Find variant based on selected values.
        *
@@ -2304,49 +2304,49 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         var selectedValues = this._getCurrentOptions();
         var variants = this.product.variants;
         var found = false;
-  
+
         variants.forEach(function(variant) {
           var satisfied = true;
-  
+
           selectedValues.forEach(function(option) {
             if (satisfied) {
               satisfied = (option.value === variant[option.index]);
             }
           });
-  
+
           if (satisfied) {
             found = variant;
           }
         });
-  
+
         return found || null;
       },
-  
+
       /**
        * Event handler for when a variant input changes.
        */
       _onSelectChange: function() {
         var variant = this._getVariantFromOptions();
-  
+
         this.$container.trigger({
           type: 'variantChange',
           variant: variant
         });
-  
+
         if (!variant) {
           return;
         }
-  
+
         this._updateMasterSelect(variant);
         this._updateImages(variant);
         this._updatePrice(variant);
         this.currentVariant = variant;
-  
+
         if (this.enableHistoryState) {
           this._updateHistoryState(variant);
         }
       },
-  
+
       /**
        * Trigger event when variant image changes
        *
@@ -2356,17 +2356,17 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       _updateImages: function(variant) {
         var variantImage = variant.featured_image || {};
         var currentVariantImage = this.currentVariant.featured_image || {};
-  
+
         if (!variant.featured_image || variantImage.src === currentVariantImage.src) {
           return;
         }
-  
+
         this.$container.trigger({
           type: 'variantImageChange',
           variant: variant
         });
       },
-  
+
       /**
        * Trigger event when variant price changes.
        *
@@ -2377,13 +2377,13 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         if (variant.price === this.currentVariant.price && variant.compare_at_price === this.currentVariant.compare_at_price) {
           return;
         }
-  
+
         this.$container.trigger({
           type: 'variantPriceChange',
           variant: variant
         });
       },
-  
+
       /**
        * Update history state for product deeplinking
        *
@@ -2393,11 +2393,11 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         if (!history.replaceState || !variant) {
           return;
         }
-  
+
         var newurl = window.location.protocol + '//' + window.location.host + window.location.pathname + '?variant=' + variant.id;
         window.history.replaceState({path: newurl}, '', newurl);
       },
-  
+
       /**
        * Update hidden master select of variant change
        *
@@ -2407,23 +2407,23 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         $(this.originalSelectorId, this.$container)[0].value = variant.id;
       }
     });
-  
+
     return Variants;
   })();
-  
+
   theme.LibraryLoader = (function() {
     var types = {
       link: 'link',
       script: 'script'
     };
-  
+
     var status = {
       requested: 'requested',
       loaded: 'loaded'
     };
-  
+
     var cloudCdn = 'https://cdn.shopify.com/shopifycloud/';
-  
+
     var libraries = {
       youtubeSdk: {
         tagId: 'youtube-sdk',
@@ -2456,23 +2456,23 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         type: types.link
       }
     };
-  
+
     function load(libraryName, callback) {
       var library = libraries[libraryName];
-  
+
       if (!library) return;
       if (library.status === status.requested) return;
-  
+
       callback = callback || function() {};
       if (library.status === status.loaded) {
         callback();
         return;
       }
-  
+
       library.status = status.requested;
-  
+
       var tag;
-  
+
       switch (library.type) {
         case types.script:
           tag = createScriptTag(library, callback);
@@ -2481,14 +2481,14 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           tag = createLinkTag(library, callback);
           break;
       }
-  
+
       tag.id = library.tagId;
       library.element = tag;
-  
+
       var firstScriptTag = document.getElementsByTagName(library.type)[0];
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     }
-  
+
     function createScriptTag(library, callback) {
       var tag = document.createElement('script');
       tag.src = library.src;
@@ -2498,7 +2498,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       });
       return tag;
     }
-  
+
     function createLinkTag(library, callback) {
       var tag = document.createElement('link');
       tag.href = library.src;
@@ -2510,18 +2510,18 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       });
       return tag;
     }
-  
+
     return {
       load: load
     };
   })();
   theme.Helpers = (function() {
     var touchDevice = false;
-  
+
     function setTouch() {
       touchDevice = true;
     }
-  
+
     function isTouch() {
       return touchDevice;
     }
@@ -2540,11 +2540,11 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
     var $button = $container.find(".btn--next");
     var noChildren = $slides.children().length;
     var wrapAround = false;
-  
+
     if (noChildren > 2) {
       wrapAround = true;
     }
-    
+
     $slides.flickity({
       // options
       freeScroll: true,
@@ -2557,12 +2557,12 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       prevNextButtons: false,
       pageDots: false
     });
-  
+
     if($slides.find('.initial-selected').length) {
       var index = $slides.find('.initial-selected').index();
       $slides.flickity( 'select', index );
     };
-  
+
     // temporary fix for iOS bug
     $slides.on( 'dragStart.flickity', function( event, pointer ) {
       document.ontouchmove = function (e) {
@@ -2574,31 +2574,37 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         return true;
       }
     });
-  
+
     $slides.on( 'dragEnd.flickity', function( event, pointer ) {
       document.ontouchmove = function (e) {
         return true;
       }
     });
-  
-  
+
+
     $button.on("click", function() {
       $slides.flickity("next", true);
     });
-  
+
   };
-  
+
   theme.fadeIn = function(container) {
     this.$container = container;
     var itemQueue = [];
     var delay = 100;
     var queueTimer;
     var $items = $(".item__inner", this.$container);
-  
+
+    console.log("inside theme.fadeIn");
+
     function processItemQueue() {
       if (queueTimer) return; // We're already processing the queue
       queueTimer = window.setInterval(function() {
         if (itemQueue.length) {
+          console.log("activated was added!");
+          console.log($(itemQueue.shift()).parent());
+
+
           $(itemQueue.shift()).parent().addClass("activated");
           processItemQueue();
         } else {
@@ -2607,7 +2613,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         }
       }, delay);
     }
-  
+
     $items.each(function() {
       var watcher = scrollMonitor.create( $(this) );
       watcher.enterViewport(function() {
@@ -2620,48 +2626,48 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         processItemQueue();
       });
     });
-  
+
   };
-  
-  
-  
+
+
+
   // Youtube API callback
   // eslint-disable-next-line no-unused-vars
   window.onYouTubeIframeAPIReady = function() {
     theme.ProductVideo.loadVideos(theme.ProductVideo.hosts.youtube);
   }
-  
-  
+
+
   theme.ProductVideo = (function() {
     var videos = {};
-  
+
     var hosts = {
       html5: 'html5',
       youtube: 'youtube'
     };
-  
+
     var selectors = {
       productMediaWrapper: '[data-product-single-media-wrapper]'
     };
-  
+
     var attributes = {
       enableVideoLooping: 'enable-video-looping',
       videoId: 'video-id'
     };
-  
+
     function init(videoContainer, sectionId) {
       // check to see if video container exists, if not exit
       if (!videoContainer.length) {
         return;
       }
-  
+
       var videoElement = videoContainer.find('iframe, video')[0];
       var mediaId = videoContainer.data('mediaId');
-  
+
       if (!videoElement) {
         return;
       }
-  
+
       videos[mediaId] = {
         mediaId: mediaId,
         sectionId: sectionId,
@@ -2672,38 +2678,38 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           createPlayer(this);
         }
       };
-  
+
       var video = videos[mediaId];
-  
+
       switch (video.host) {
         case hosts.html5:
-          
+
           window.Shopify.loadFeatures([{
             // name: 'shopify-plyr',
             name: 'video-ui',
             version: '1.0',
             onLoad: setupPlyrVideos,
           }]);
-  
+
           theme.LibraryLoader.load('plyrShopifyStyles');
           break;
         case hosts.youtube:
           theme.LibraryLoader.load('youtubeSdk');
           break;
       }
-  
+
     }
-  
+
     function createPlayer(video) {
       if (video.player) {
         return;
       }
-  
+
       var productMediaWrapper = video.container.closest(
         selectors.productMediaWrapper
       );
       var enableLooping = productMediaWrapper.data(attributes.enableVideoLooping);
-      
+
       //setup player according to the host
       switch (video.host) {
         case hosts.html5:
@@ -2728,14 +2734,14 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             theme.Product.prototype.changeFlickityIndex(index);
             theme.Product.prototype.toggleDraggable(false);
           });
-  
+
           video.player.on('pause', function() {
             theme.Product.prototype.toggleDraggable(true);
           });
           break;
         case hosts.youtube:
           var videoId = productMediaWrapper.data(attributes.videoId);
-  
+
           video.player = new YT.Player(video.element, {
             videoId: videoId,
             events: {
@@ -2753,11 +2759,11 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           });
           break;
       }
-  
+
       // function for when the media is hidden or XR is launched
       productMediaWrapper.on('mediaHidden xrLaunch', function() {
         if (!video.player) return;
-  
+
         if (video.host === hosts.html5) {
           video.player.pause();
         }
@@ -2765,12 +2771,12 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           video.player.pauseVideo();
         }
       });
-  
+
       //function for when it is visible
       productMediaWrapper.on('mediaVisible', function() {
         if (theme.Helpers.isTouch()) return;
         if (!video.player) return;
-  
+
         if (video.host === hosts.html5) {
           video.player.play();
         }
@@ -2778,19 +2784,19 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           video.player.playVideo();
         }
       });
-  
+
     }
-  
+
     function setupPlyrVideos(error) {
       //loadVideos(hosts.html5);
       if (error) {
         // eg. Shopify XR elements from page
         fallbackToNativeVideo();
         return;
-      }  
+      }
       loadVideos(hosts.html5);
     }
-  
+
     function loadVideos(host) {
       for (var key in videos) {
         if (videos.hasOwnProperty(key)) {
@@ -2801,7 +2807,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         }
       }
     }
-  
+
     function hostFromVideoElement(video) {
       if (video.tagName === 'VIDEO') {
         return hosts.html5;
@@ -2817,14 +2823,14 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       }
       return null;
     }
-  
+
     function fallbackToNativeVideo() {
       for (var key in videos) {
         if (videos.hasOwnProperty(key)) {
           var video = videos[key];
-  
+
           if (video.nativeVideo) continue;
-  
+
           if (video.host === hosts.html5) {
             video.element.setAttribute('controls', 'controls');
             video.nativeVideo = true;
@@ -2832,7 +2838,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         }
       }
     }
-  
+
     function removeSectionVideos(sectionId) {
       for (var key in videos) {
         if (videos.hasOwnProperty(key)) {
@@ -2844,7 +2850,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         }
       }
     }
-  
+
     return {
       init: init,
       hosts: hosts,
@@ -2852,17 +2858,17 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       removeSectionVideos: removeSectionVideos
     };
   })();
-  
+
   theme.ProductModel = (function() {
     var modelJsonSections = {};
     var models = {};
     var xrButtons = {};
-  
+
     var selectors = {
       mediaGroup: '[data-product-single-media-group]',
       xrButton: '[data-shopify-xr]'
     };
-  
+
     function init(modelViewerContainers, sectionId) {
       // loadFeature will use mutation observer.
       // Final version of debut will not check this.
@@ -2871,11 +2877,11 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         window.Shopify.detectLoadJS();
       }
       */
-  
+
       modelJsonSections[sectionId] = {
         loaded: false
       };
-  
+
       modelViewerContainers.each(function(index) {
         var $modelViewerContainer = $(this);
         var mediaId = $modelViewerContainer.data('media-id');
@@ -2883,7 +2889,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           $modelViewerContainer.find('model-viewer')[0]
         );
         var modelId = $modelViewerElement.data('model-id');
-  
+
         if (index === 0) {
           var $xrButton = $modelViewerContainer
             .parents('.product__media-container')
@@ -2893,7 +2899,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             defaultId: modelId
           };
         }
-  
+
         models[mediaId] = {
           modelId: modelId,
           sectionId: sectionId,
@@ -2901,7 +2907,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           $element: $modelViewerElement
         };
       });
-  
+
       //theme.LibraryLoader.load('shopifyXr', setupShopifyXr);
       window.Shopify.loadFeatures([
         {
@@ -2917,7 +2923,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       ]);
       theme.LibraryLoader.load('modelViewerUiStyles');
     }
-    
+
     function setupShopifyXr(errors) {
       if (errors) {
         // When loadFeature is implemented, you can console or throw errors by doing something like this:
@@ -2929,11 +2935,11 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         });
         return;
       }
-  
+
       for (var sectionId in modelJsonSections) {
         if (modelJsonSections.hasOwnProperty(sectionId)) {
           var modelSection = modelJsonSections[sectionId];
-  
+
           if (modelSection.loaded) continue;
           var $modelJson = $('#ModelJson-' + sectionId);
           window.ShopifyXR.addModels(JSON.parse($modelJson.html()));
@@ -2942,8 +2948,8 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       }
       window.ShopifyXR.setupXRElements();
     }
-  
-    
+
+
     function setupModelViewerUi(errors) {
       if (errors) {
         // When loadFeature is implemented, you can console or throw errors by doing something like this:
@@ -2960,10 +2966,10 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         }
       }
     }
-  
+
     function setupModelViewerListeners(model) {
       var xrButton = xrButtons[model.sectionId];
-  
+
       model.$container.on('mediaVisible', function() {
         xrButton.$element.attr('data-shopify-model3d-id', model.modelId);
         if (theme.Helpers.isTouch()) return;
@@ -2977,23 +2983,23 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         .on('xrLaunch', function() {
           model.modelViewerUi.pause();
         });
-    
-      
+
+
       model.$element
         .on('shopify_model_viewer_ui_toggle_play', function() {
           var index = model.$element.parents('.product-flickity__slide').index();
           theme.Product.prototype.changeFlickityIndex(index);
           theme.Product.prototype.toggleDraggable(false);
         });
-  
+
       model.$element
         .on('shopify_model_viewer_ui_toggle_pause', function() {
           theme.Product.prototype.toggleDraggable(true);
         });
-      
-  
+
+
     }
-  
+
     function removeSectionModels(sectionId) {
       for (var key in models) {
         if (models.hasOwnProperty(key)) {
@@ -3005,7 +3011,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       }
       delete modelJsonSections[sectionId];
     }
-  
+
     return {
       init: init,
       removeSectionModels: removeSectionModels
@@ -3019,7 +3025,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
    *
    * @namespace Header
    */
-  
+
   theme.Header = (function() {
     /**
      * Product section constructor. Runs on page load as well as Theme Editor
@@ -3034,32 +3040,32 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       this.$announcementBar = $(".announcement-bar", this.$container);
       this.$headerPlaceholder = $("[data-header-placeholder]", this.$container);
       this.$bannerImageDesktop = $("[data-desktop-banner-image]", this.$container);
-  
+
       if (this.$container.attr("data-sticky-header")
           && !(this.$container.attr("data-sticky-header-with-banner-and-announcement"))
           && !(this.$container.attr("data-sticky-header-with-banner-and-no-announcement"))
       ) {
         this.$container.parents('div').addClass('sticky-header-container');
         $('body').addClass('sticky-header');
-  
+
         if (this.$container.attr("data-announcement")) {
           var top = '-' + $('.announcement-bar').outerHeight() + 'px';
           this.$container.parents('div').css('top', top);
         }
       }
-  
-  
-  
+
+
+
       if(this.$container.attr('data-banner-logo-image-enabled')) {
         this.$bannerImageEnabled = true;
       } else {
         this.$bannerImageEnabled = false;
       }
-  
+
       //set headerPlaceholder height
       var height = this.$header.height() + "px";
       this.$headerPlaceholder.css("height", height);
-  
+
       //this code should only run when sticky is enabled and there is a banner
       if (this.$container.attr("data-sticky-header-with-banner-and-announcement") || this.$container.attr("data-sticky-header-with-banner-and-no-announcement")) {
         var watcher = scrollMonitor.create( this.$bannerImageDesktop );
@@ -3082,49 +3088,49 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           }
         });
       }
-  
+
       if (this.$container.attr("data-sticky-header-with-banner-and-announcement") ) {
         var $bannerImageDesktop = this.$bannerImageDesktop;
         var $announcementBar = this.$announcementBar;
-  
+
         //check if we should be watching it
         function shouldWatch() {
           var afterContent = getComputedStyle( $bannerImageDesktop[0], ':after' ).content;
           if (afterContent.indexOf('watch') !== -1) {
             return true;
           }
-  
+
           return false;
         }
-  
+
         var announcementWatcher = {};
-  
+
         $bannerImageDesktop.add($announcementBar).css('transform', 'translate3d(0,0,0)');
-  
+
         function watchAnnouncementBar() {
           var announcementBarHeight = parseInt($announcementBar.outerHeight());
           announcementWatcher = scrollMonitor.create(announcementBarHeight - 1);
-  
+
           $header.css({
             willChange: 'position, transform',
             top: 0
           });
-  
+
           $('#shopify-section-header').css('will-change', 'scroll-position');
-  
+
           var tempHeaderStyleEl = document.createElement('style');
           tempHeaderStyleEl.setAttribute('id', 'temp-header-styles');
           tempHeaderStyleEl.innerHTML = '\n' +
           '.site-header.full-height.active.is-shifted { height: calc(100vh + ' + announcementBarHeight.toString() + 'px); }\n' +
-  
+
           '.site-header.full-height.active.is-shifted .header__close { transform: translateY(' + announcementBarHeight.toString() + 'px) };';
           document.head.appendChild(tempHeaderStyleEl);
-  
+
           announcementWatcher.enterViewport(function() {
             $header.css({transform: 'translateY(0)', position: ''});
             $header.removeClass('is-shifted');
           });
-  
+
           announcementWatcher.exitViewport(function() {
             $header.css({
               transform: 'translateY(' + (announcementBarHeight * -1).toString() + 'px)',
@@ -3135,7 +3141,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             $('#shopify-section-header').css('will-change', '');
           });
         }
-  
+
         function stopWatchingAnnouncementBar() {
           announcementWatcher.destroy();
           announcementWatcher = {};
@@ -3143,25 +3149,25 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           var tempHeaderStyleEl = document.getElementById('temp-header-styles');
           tempHeaderStyleEl.parentNode.removeChild(tempHeaderStyleEl);
         }
-  
+
         if (shouldWatch() && _.isEmpty(announcementWatcher)) {
           watchAnnouncementBar();
         }
-  
+
         function resizeHandler() {
           if (shouldWatch() && _.isEmpty(announcementWatcher)) {
             watchAnnouncementBar();
           }
-  
+
           if (!shouldWatch() && !_.isEmpty(announcementWatcher)) {
             stopWatchingAnnouncementBar();
           }
         }
-  
+
         $(window).on('resize', _.debounce(resizeHandler, 400));
       }
-  
-  
+
+
       // Enabled ajax cart if no products
       if (
         theme.data.cartMethod === "modal" &&
@@ -3175,11 +3181,11 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           enableQtySelectors: true,
           moneyFormat: theme.moneyFormat
         });
-  
+
         $(document.body).on("ajaxCart.beforeChangeItem", function(evt, cart) {
           $("[data-ajax-cart-spinner]").removeClass("hide");
         });
-  
+
         $(document.body).on("ajaxCart.afterChangeItem", function(evt, cart) {
           $("[data-ajax-cart-spinner]").addClass("hide");
         });
@@ -3189,7 +3195,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           moneyFormat: theme.moneyFormat
         });
       }
-  
+
       // arrow button when banner is activated
       var $bannerScroll = $("[data-banner-scroll]", this.$container);
       $bannerScroll.click(function(e) {
@@ -3202,7 +3208,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         );
       });
     }
-  
+
     Header.prototype = $.extend({}, Header.prototype, {
       accessibleNav: function() {
         var $activeHeaderTrigger = $(
@@ -3239,38 +3245,38 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             this.$container
           ),
           $searchInput = $("[data-search-input]", this.$container);
-  
+
         /**
          * Header resize function
          */
-  
+
         var $originalNavListWidth = $navList.width();
         var resizeTimer; // Set resizeTimer to empty so it resets on page load
-  
+
         $(window).resize(function() {
           clearTimeout(resizeTimer);
           resizeTimer = setTimeout(headerResize, 50);
         });
-  
+
         function headerResize() {
           if ($header.hasClass("active") || $navContainer.is(":hidden")) {
             return;
           }
-  
+
           var navwidth = 0;
           var morewidth = $navMoreLink.outerWidth(true);
-  
+
           $navMoreLink.addClass("offscreen");
           morewidth = $navMoreLink.find("a").outerWidth();
           $navMoreLink.removeClass("offscreen");
-  
+
           $navList.find("li.nav__item").each(function() {
             navwidth += $(this).outerWidth(true);
           });
-  
+
           var $navContainerWidth = $navContainer.width();
           var availablespace = $navContainerWidth - morewidth;
-  
+
           if (navwidth > availablespace) {
             var lastItem = $navList.find("li.nav__item:not(.hide)").last();
             lastItem.attr("data-width", lastItem.outerWidth(true));
@@ -3282,23 +3288,23 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
               firstMoreElement.removeClass("hide");
             }
           }
-  
+
           if ($("li.nav__item.hide").length > 0) {
             $navMoreLink.removeClass("hide");
           } else {
             $navMoreLink.addClass("hide");
           }
         }
-  
+
         headerResize();
-  
+
         /**
          * Close header when overlay is clicked
          */
         this.$container.on("click", "[data-header-overlay]", function(evt) {
           closeHeader();
         });
-  
+
         /**
          * Close header when escape key is pressed and header is active
          */
@@ -3310,7 +3316,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             }
           }
         });
-  
+
         /**
          * Close header on click / enter on close button
          */
@@ -3319,7 +3325,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             closeHeader();
           }
         });
-  
+
         /**
          * Open active tab and focus first item when "More" link is pressed
          */
@@ -3336,7 +3342,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             }
           }
         );
-  
+
         /**
          * Enable active header on click or enter
          */
@@ -3356,7 +3362,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             }
           }
         );
-  
+
         /**
          * Focus search box on click / enter
          */
@@ -3367,7 +3373,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             $searchInput.focus();
           }, 210);
         });
-  
+
         /**
          * Drop down navigation events
          */
@@ -3382,7 +3388,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           var $desktopLink = $(
             "[data-first-level-link=desktop][data-key=" + $key + "]"
           );
-  
+
           //
           if (
             (evt.which === 13 && evt.type === "keydown") ||
@@ -3392,14 +3398,14 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             //show desktop target
             $desktopSubNav.addClass("hide");
             $("[data-desktop-sub-nav=" + $key + "]").removeClass("hide");
-  
+
             //mobile target
             $mobileNavigationContainer.addClass("shift");
             if ($el.data('first-level-single-link') !== true) {
               $mobileNavPrev.removeClass("hide");
             }
             $mobileSecondLevelSection.addClass("hide");
-  
+
             //add class to selected item
             if ($el.data("first-level-link") === "mobile") {
               $("[data-first-level-link=mobile]").removeClass("active");
@@ -3408,7 +3414,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             $(
               "[data-mobile-second-level-section][data-key=" + $key + "]"
             ).removeClass("hide");
-  
+
             //focus first item
             if (
               $el.data("first-level-link") === "mobile" &&
@@ -3418,7 +3424,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             }
           }
         });
-  
+
         /*
         Focus first element in active tab
         */
@@ -3444,7 +3450,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             }
           }
         });
-  
+
         /**
          * Keydown on first link in subnavigatoin
          */
@@ -3462,7 +3468,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             }
           }
         );
-  
+
         /**
          * Keydown on last link in active tab - desktop
          */
@@ -3486,7 +3492,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             }
           }
         });
-  
+
         /**
          * Keydown on last link in active tab - mobile
          */
@@ -3502,7 +3508,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             }
           }
         });
-  
+
         /**
          * Events for navigation toggle on first level
          */
@@ -3518,7 +3524,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           toggleNav($mobileLink);
           toggleNav($desktopLink);
         });
-  
+
         /**
          * Event for previous arrow on mobile navigation
          */
@@ -3532,23 +3538,23 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
               evt.type === "click"
             ) {
               evt.preventDefault();
-  
+
               // show main navigation
               $mobileNavigationContainer.removeClass("shift");
               $mobileSecondLevelSection.addClass("hide");
               $mobileNavPrev.addClass("hide");
-  
+
               //hide all desktop sub navs
               $desktopSubNav.addClass("hide");
               setActiveState("");
-  
+
               if (evt.which === 13 && evt.type === "keydown") {
                 $(".active[data-first-level-link=mobile]").focus();
               }
             }
           }
         );
-  
+
         /**
          * Navigation toggle
          */
@@ -3567,7 +3573,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             $el.find(".chevron-up").removeClass("hide");
           }
         }
-  
+
         /**
          * Set active state of a top level nav item
          */
@@ -3585,7 +3591,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             $el.find(".site-nav__chevron-up").removeClass("hide");
           }
         }
-  
+
         /**
          * Show the target of active nav (navigation, search, cart etc);
          */
@@ -3596,24 +3602,24 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             $navMoreLink.addClass("hide");
             $navList.find("li.nav__item").removeClass("hide");
           }
-  
+
           setActiveState($el);
-  
+
           //get target
           var $target = $el.data("active-target");
-  
+
           //if target is cart, load the cart
           if ($target === "cart") {
             ajaxCart.load();
           }
-  
+
           //hide all active sections
           $activeSection.addClass("hide");
-  
+
           //show target
           $("[data-active-name=" + $target + "]").removeClass("hide");
         }
-  
+
         /**
          * Focus close button after cart, only if it isn't currently selected
          */
@@ -3639,30 +3645,30 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             $("[data-close-header]").focus();
           }
         });
-  
+
         /**
          * Close header and reset everything
          */
         function closeHeader() {
           // disable header active class
           toggleHeaderClass("close");
-  
+
           // remove selected class on active tab
           $activeHeaderTrigger.removeClass("isSelected");
           $activeHeaderTrigger
             .find(".site-nav__chevron-down")
             .removeClass("hide");
           $activeHeaderTrigger.find(".site-nav__chevron-up").addClass("hide");
-  
+
           $desktopSubNav.addClass("hide");
           //default mobile
           $mobileNavigationContainer.removeClass("shift");
           $mobileSecondLevelSection.addClass("hide");
           $mobileNavPrev.addClass("hide");
-  
+
           headerResize();
         }
-  
+
         /**
          * Toggle header class based on method
          */
@@ -3673,7 +3679,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             setTimeout(function() {
               $header.removeClass("full-height");
             }, 210);
-  
+
             $("html, body").removeClass("overflow--hidden");
           }
           if (method === "open") {
@@ -3683,13 +3689,13 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
               $header.prepareHeaderTransition().addClass("active");
               $headerActive.prepareTransition().addClass("visible");
             }, 10);
-  
-  
+
+
             $("html, body").addClass("overflow--hidden");
           }
         }
       },
-  
+
       /**
        * Event callback for Theme Editor `section:unload` event
        */
@@ -3697,10 +3703,10 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         this.$container.off(this.namespace);
       }
     });
-  
+
     return Header;
   })();
-  
+
   /**
    * Product Template Script
    * ------------------------------------------------------------------------------
@@ -3708,7 +3714,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
    *
    * @namespace product
    */
-  
+
   theme.Product = (function() {
     /**
      * Product section constructor. Runs on page load as well as Theme Editor
@@ -3717,7 +3723,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
      */
     function Product(container) {
       var $container = (this.$container = $(container));
-  
+
       this.selectors = {
         addToCart: "[data-add-to-cart]",
         addToCartText: "[data-add-to-cart-text]",
@@ -3749,19 +3755,19 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       if (!$(this.selectors.productJson, $container).html()) {
         return;
       }
-  
+
       var sectionId = $container.attr("data-section-id");
       this.productSingleObject = JSON.parse(
         $(this.selectors.productJson, $container).html()
       );
-  
+
       this.feature_product = false;
       this.mediaHiddenClass = 'md--up--hide';
       if($container.attr('data-product-feature')) {
         this.feature_product = true;
         this.mediaHiddenClass = 'hide';
       }
-  
+
       var options = {
         $container: $container,
         enableHistoryState: $container.data("enable-history-state") || false,
@@ -3770,14 +3776,14 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         originalSelectorId: this.selectors.originalSelectorId,
         product: this.productSingleObject
       };
-  
+
       this.settings = {
         sectionId: sectionId
       };
       this.namespace = ".product";
       this.variants = new slate.Variants(options);
-  
-  
+
+
       // variant events
       $container.on(
         "variantChange" + this.namespace,
@@ -3787,41 +3793,41 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         "variantPriceChange" + this.namespace,
         this._updateProductPrices.bind(this)
       );
-  
+
       $container.on(
         "variantImageChange" + this.namespace,
         this._updateProductImage.bind(this)
       );
-  
+
       var self = this;
-  
+
       this.$mobileFlickity = $(this.selectors.mobileFlickity, $container);
       this.$flickityCurrentIndex = null;
       if (this.$mobileFlickity.length > 0) {
         this._setUpFlickity($container);
       }
-  
-  
+
+
       this.$productThumbs = $(this.selectors.productThumbs, $container);
       this.$productThumbnailHolder = $(
         this.selectors.productThumbnailHolder,
         $container
       );
-  
+
       this.$productThumbnailOverflow = $(
         this.selectors.productThumbnailOverflow,
         this.$productThumbnailHolder
       );
-  
+
       this.$productThumbs.click(function(e) {
         e.preventDefault();
         self._productThumbnailClick($(this));
       });
-  
+
       this.$productThumbs.on('keyup', self._handleMediaFocus.bind(self));
-  
+
       this._productThumbsHeight();
-  
+
       // Ajax Cart
       if (theme.data.cartMethod === "modal") {
         ajaxCart.init({
@@ -3832,7 +3838,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           enableQtySelectors: true,
           moneyFormat: theme.moneyFormat
         });
-  
+
         $(document.body).on("ajaxCart.afterAddItem", function(evt, cart) {
           if (!$(".site-header").hasClass("active")) {
             $("#CartContainer").empty();
@@ -3841,30 +3847,30 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             $("#CartLink").trigger("click");
           }
         });
-  
+
         $(document.body).on("ajaxCart.beforeChangeItem", function(evt, cart) {
           $("[data-ajax-cart-spinner]").removeClass("hide");
         });
-  
+
         $(document.body).on("ajaxCart.afterChangeItem", function(evt, cart) {
           $("[data-ajax-cart-spinner]").addClass("hide");
         });
       }
-  
+
       this.$productDescription = $(this.selectors.productDescription, $container);
       if (this.$productDescription.attr("data-split")) {
         this._splitDescription(this.$productDescription);
       }
-  
+
       if (options.enableProductZoom) {
         this._setUpImageZoom();
       }
-  
+
       this._initProductVideo();
       this._initModelViewerLibraries();
-  
+
     }
-  
+
     Product.prototype = $.extend({}, Product.prototype, {
       /**
        * Splits the description
@@ -3875,12 +3881,12 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       _splitDescription: function(productDescription) {
         var $productDescription = productDescription;
         var canSplit = false;
-  
+
         var fadeIn = "";
         if ($productDescription.data("fade-in") === true) {
           fadeIn = "fade-in";
         }
-  
+
         var $imageElement =
           '<div class="item item--large-gap  item--desktop--half item--mobile--full ' +
           fadeIn +
@@ -3889,16 +3895,16 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           '<div class="item item--large-gap  item--desktop--half item--mobile--full ' +
           fadeIn +
           '"><div class="item__inner lg--up--text-align--center"><div class="pm--three-quarters wd--two-thirds inline-block text-align--left"></div></div></div>';
-  
+
         // first unwrap div tags as they cause issues
-  
-  
-  
+
+
+
         $productDescription.find("div").each(function() {
           $(this).contents().unwrap();
         });
-  
-  
+
+
         //add a class to each image tag
         $productDescription.find("p").each(function() {
           // For each paragraph
@@ -3910,7 +3916,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             $(this).addClass("has-image"); // Add a special CSS class
           }
         });
-  
+
         //check for any unwrapped text
         var textnodes = this._getTextNodesIn($($productDescription)[0]);
         for(var i=0; i < textnodes.length; i++){
@@ -3918,10 +3924,10 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
                 $(textnodes[i]).wrap("<p>");
             }
         }
-  
+
         if ($productDescription.find("p.has-image").length > 0) {
           canSplit = true;
-  
+
           //get first child element and wrap them until first image
           if (!$productDescription.children(":first").hasClass("has-image")) {
             $productDescription
@@ -3930,7 +3936,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
               .addBack()
               .wrapAll($contentElement);
           }
-  
+
           $productDescription.find("p.has-image").each(function() {
             // For each paragraph
             $(this)
@@ -3965,11 +3971,11 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
               counter++;
             }
           });
-  
+
           $productDescription.prepend(
             '<div class="item-sizer"></div><div class="column-sizer"></div>'
           );
-  
+
           this.$masonryGrid = $productDescription.masonry({
             itemSelector: ".item",
             columnWidth: ".column-sizer",
@@ -3977,12 +3983,12 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             percentPosition: true,
             isLayoutInstant: true
           });
-  
+
           var grid = this.$masonryGrid;
           grid.imagesLoaded().progress(function() {
             grid.masonry("layout");
           });
-  
+
           var resizeTimer;
           $(window).on("resize", function(e) {
             clearTimeout(resizeTimer);
@@ -3990,9 +3996,9 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
               grid.masonry();
             }, 300);
           });
-  
+
           $productDescription.find(".item").addClass("ready");
-  
+
           if ($productDescription.data("fade-in") === true) {
             theme.fadeIn($productDescription);
           }
@@ -4000,10 +4006,10 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           $productDescription.addClass("max-width--3");
         }
       },
-  
+
       _getTextNodesIn: function(node, includeWhitespaceNodes) {
         var textNodes = [], whitespace = /^\s*$/;
-  
+
         function getTextNodes(node) {
             if (node.nodeType == 3) {
                 if (includeWhitespaceNodes || !whitespace.test(node.nodeValue)) {
@@ -4015,16 +4021,16 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
                 }
             }
         }
-  
+
         getTextNodes(node);
         return textNodes;
       },
-  
+
       _productThumbsHeight: function() {
         var $thumbsHeight = this.$productThumbnailHolder.find('.product__thumbnails').height();
         var $featuredMedia = this._getCurrentMedia();
         var $featuredMediaHeight = $featuredMedia.height();
-  
+
         if( $thumbsHeight > $featuredMediaHeight ) {
           this.$productThumbnailHolder.addClass('md--up--overflow--y-scroll');
           this.$productThumbnailOverflow.removeClass('hide');
@@ -4033,52 +4039,52 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           this.$productThumbnailOverflow.addClass('hide');
         }
       },
-  
+
       _setUpImageZoom: function() {
         var $this = this;
         var pswpElement = document.querySelectorAll('.pswp')[0];
-  
+
         var mobileWidth = 1400;
         var desktopMaxWidth = 3000;
-  
+
         var mobileItems = [];
         var desktopItems = [];
-  
+
         $(this.selectors.productImageZoomItems, this.$container).each(function(){
-  
+
           var mobileSizedImgUrl = slate.Image.getSizedImageUrl(
                               $(this).data('image-master-url'),
                               mobileWidth.toString() + 'x'
                             );
-  
+
           var aspectRatio;
-  
+
           if ($(this).prop('tagName') === 'IMG') {
             aspectRatio = $(this).data('aspectratio');
           } else {
             aspectRatio = $(this).find('img').data('aspectratio');
           }
-  
+
           var mobileItem = {
             src: mobileSizedImgUrl,
             w: mobileWidth,
             h: mobileWidth / aspectRatio
           };
-  
+
           mobileItems.push(mobileItem);
-  
+
           // If master image is desktopMaxWidth wide or less,
           // use it for zoom on desktop, otherwise get a
           // desktopMaxWidth-size image
-  
+
           var imageMasterUrl = $(this).data('image-master-url'),
             imageMasterWidth = $(this).data('image-master-width'),
             imageMasterHeight = $(this).data('image-master-height');
-  
+
           var desktopImageFinalUrl = '',
             desktopImageFinalWidth = 0,
             desktopImageFinalHeight = 0;
-  
+
           if (imageMasterWidth <= desktopMaxWidth) {
             desktopImageFinalUrl = imageMasterUrl;
             desktopImageFinalWidth = imageMasterWidth;
@@ -4092,17 +4098,17 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             desktopImageFinalWidth = desktopMaxWidth;
             desktopImageFinalHeight = desktopMaxWidth / aspectRatio;
           }
-  
+
           var desktopItem = {
             src: desktopImageFinalUrl,
             w: desktopImageFinalWidth,
             h: desktopImageFinalHeight
           }
-  
+
           desktopItems.push(desktopItem);
-  
+
         });
-  
+
         var options = {
             history: false,
             captionEl: false,
@@ -4115,7 +4121,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             closeEl: true,
             barsSize: {top:0, bottom:'auto'},
         };
-  
+
         var $this = this;
         $(this.selectors.productMediaTypeImage).on('click imageZoom', function(e) {
           e.preventDefault();
@@ -4125,24 +4131,24 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           } else {
             items = mobileItems
           }
-  
+
           options.index = parseInt($(this).attr('data-product-image-index'));
           $this._openZoomModal(pswpElement, PhotoSwipeUI_Default, desktopItems, options);
         })
-  
+
       },
-  
+
       _openZoomModal: function(pswpElement, PhotoSwipeUI, items, options) {
         var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI, items, options);
         gallery.init();
-  
+
         $('html, body').addClass('overflow--hidden');
-  
+
         gallery.listen('close', function() {
           $('html, body').removeClass('overflow--hidden');
         });
       },
-  
+
       /**
        * Updates the DOM state of the add to cart button
        *
@@ -4151,7 +4157,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
        */
       _updateAddToCartState: function(evt) {
         var variant = evt.variant;
-  
+
         if (variant) {
           $(this.selectors.priceWrapper, this.$container).removeClass("invisible");
         } else {
@@ -4162,7 +4168,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           $(this.selectors.priceWrapper, this.$container).addClass("invisible");
           return;
         }
-  
+
         if (variant.available) {
           $(this.selectors.addToCart, this.$container).prop("disabled", false);
           $(this.selectors.addToCartText, this.$container).html(
@@ -4173,7 +4179,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           $(this.selectors.addToCartText, this.$container).html(theme.strings.soldOut);
         }
       },
-  
+
       /**
        * Updates the DOM with specified prices
        *
@@ -4187,30 +4193,30 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           this.selectors.comparePriceText,
           this.$container
         );
-  
+
         $(this.selectors.productPrice, this.$container).html(
           slate.Currency.formatMoney(variant.price, theme.moneyFormat)
         );
-  
+
         if (variant.unit_price) {
           $(this.selectors.unitPrice, this.$container)
             .html(slate.Currency.formatMoney(variant.unit_price, theme.moneyFormat));
-  
+
           if (variant.unit_price_measurement.reference_value != 1) {
             $(this.selectors.unitPriceMeasurementReferenceValue, this.$container)
               .html(variant.unit_price_measurement.reference_value);
           } else {
             $(this.selectors.unitPriceMeasurementReferenceValue, $container).empty();
           }
-  
+
           $(this.selectors.unitPriceMeasurementReferenceUnit, this.$container)
             .html(variant.unit_price_measurement.reference_unit);
-  
+
           $(this.selectors.productDescriptionContainer, this.$container).addClass('has-unit-price');
         } else {
           $(this.selectors.productDescriptionContainer, this.$container).removeClass('has-unit-price');
         }
-  
+
         if (variant.compare_at_price > variant.price) {
           $comparePrice.html(
             slate.Currency.formatMoney(
@@ -4224,7 +4230,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           $compareEls.addClass("hide");
         }
       },
-  
+
       /**
        * Updates the DOM with the specified image URL
        *
@@ -4232,25 +4238,25 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
        */
       _productThumbnailClick: function(item) {
         var $el = $(item);
-  
-  
+
+
         var mediaId = $el.data('thumbnail-id');
         this._switchMedia(mediaId);
         this._setActiveThumbnail(mediaId);
-  
+
         var thumbHeight = this.$productThumbs.height();
         var thumbsHolderHeight = this.$productThumbnailHolder.height();
-  
+
         var scrollY =
           $el.position().top +
           this.$productThumbnailHolder.scrollTop() -
           (thumbsHolderHeight + thumbHeight) / 2;
-  
+
         this.$productThumbnailHolder.animate({
           scrollTop: scrollY
         });
       },
-  
+
       _setActiveThumbnail: function(mediaId) {
         var $activeThumbnail = this.$productThumbnailHolder.find(
           this.selectors.productThumbs +
@@ -4261,7 +4267,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         $(this.selectors.productThumbs).removeClass("active");
         $activeThumbnail.addClass("active");
       },
-  
+
       _getCurrentMedia: function() {
         return $(
           this.selectors.productMediaWrapper +
@@ -4269,14 +4275,14 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             this.$container
         );
       },
-  
+
       _switchMedia: function(mediaId) {
         var $currentMedia = $(
           this.selectors.productMediaWrapper +
             ':not(.' + this.mediaHiddenClass + ')',
             this.$container
         );
-  
+
         var $newMedia = $(
           this.selectors.productMediaWrapper +
             "[data-media-id='" +
@@ -4284,7 +4290,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             "']",
             this.$container
         );
-  
+
         var $otherMedia = $(
           this.selectors.productMediaWrapper +
             ":not([data-media-id='" +
@@ -4292,21 +4298,21 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             "'])",
             this.$container
         );
-  
+
         $currentMedia.trigger('mediaHidden');
         $newMedia.removeClass(this.mediaHiddenClass).trigger('mediaVisible');
         $otherMedia.addClass(this.mediaHiddenClass);
-  
+
         //if flickity
         if ( $('.product-flickity__slides').hasClass('flickity-enabled')) {
           var index = $newMedia.index();
           this.$mobileFlickity.find('.flickity-enabled').flickity( 'select', index );
         }
-  
+
         //check product thumbs height again
         this._productThumbsHeight();
       },
-  
+
       /**
        * Updates the DOM with the specified image URL
        *
@@ -4316,12 +4322,12 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         var variant = evt.variant;
         var mediaId = variant.featured_media.id;
         var sectionMediaId = this.settings.sectionId + '-' + mediaId;
-  
+
         this._switchMedia(sectionMediaId);
         this._setActiveThumbnail(sectionMediaId);
-  
+
       },
-  
+
       _initProductVideo: function() {
         var sectionId = this.settings.sectionId;
         $(this.selectors.productMediaTypeVideo, this.$container).each(function() {
@@ -4329,7 +4335,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           theme.ProductVideo.init($el, sectionId);
         });
       },
-  
+
       _initModelViewerLibraries: function() {
         var $modelViewerElements = $(
           this.selectors.productMediaTypeModel,
@@ -4338,7 +4344,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         if ($modelViewerElements.length < 1) return;
         theme.ProductModel.init($modelViewerElements, this.settings.sectionId);
       },
-  
+
       _setUpFlickity: function(container) {
         var $container = container;
         theme.mobileFlickity(this.$mobileFlickity);
@@ -4350,26 +4356,26 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           $(self.$flkty.selectedElement).trigger('mediaVisible');
           self.$flickityCurrentElement= self.$flkty.selectedElement;
         });
-  
+
         this.$flkty.on( 'pointerDown', function( event ) {
           var $targetSlide = $(event.target).parents('.product-flickity__slide');
           if(!$targetSlide.hasClass('is-selected')) {
             self.toggleDraggable(true);
           }
         });
-  
+
         var $button = $container.find(".btn--next");
         $button.on("click", function() {
           self.toggleDraggable(true);
         });
-  
+
       },
-  
+
       _handleMediaFocus: function(evt) {
         if (evt.keyCode !== slate.utils.keyboardKeys.ENTER) return;
-  
+
         var mediaId = $(evt.currentTarget).data('thumbnail-id');
-  
+
         $(
           this.selectors.productMediaWrapper +
             "[data-media-id='" +
@@ -4378,7 +4384,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           this.$container
         ).focus();
       },
-  
+
       toggleDraggable: function(method) {
         if( $('.product-flickity__slides').hasClass('flickity-enabled')){
           var flkty = $('.product-flickity__slides').data('flickity');
@@ -4386,7 +4392,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           flkty.updateDraggable();
         }
       },
-  
+
       changeFlickityIndex: function(index) {
         if( $('.product-flickity__slides').hasClass('flickity-enabled')){
           var flkty = $('.product-flickity__slides').data('flickity');
@@ -4394,7 +4400,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           //resize only if i
         }
       },
-  
+
       /**
        * Event callback for Theme Editor `section:unload` event
        */
@@ -4403,24 +4409,24 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         theme.ProductVideo.removeSectionVideos(this.settings.sectionId);
         theme.ProductModel.removeSectionModels(this.settings.sectionId);
       },
-  
+
       onSectionLoad: function() {
         this.$relatedProducts = $("[data-related-products]", this.$container);
-  
+
         var sectionid = this.$relatedProducts.data("section-id");
         var e = jQuery.Event("shopify:section:load", {
           detail: { sectionId: sectionid }
         });
-  
+
         this.$relatedProducts.trigger(e);
       }
     });
-  
+
     return Product;
   })();
-  
-  
-  
+
+
+
   /**
    * Product Recommendations Template Script
    * ------------------------------------------------------------------------------
@@ -4428,7 +4434,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
    *
    * @namespace product
    */
-  
+
    theme.ProductRecommendations = (function() {
      /**
       * Product section constructor. Runs on page load as well as Theme Editor
@@ -4437,14 +4443,14 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       */
      function productRecommendations(container) {
        this.$container = $(container);
-  
+
        var productRecommendationsSection = document.querySelector(".product-recommendations");
        if (productRecommendationsSection === null) { return; }
-  
+
        var productId = productRecommendationsSection.dataset.productId;
        var limit = productRecommendationsSection.dataset.limit;
        var requestUrl = "/recommendations/products?section_id=product-recommendations&limit="+limit+"&product_id="+productId;
-  
+
        var request = new XMLHttpRequest();
        request.open("GET", requestUrl);
        request.onload = function() {
@@ -4456,12 +4462,12 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
          }
        };
        request.send();
-  
+
      }
-  
+
      return productRecommendations;
    })();
-  
+
   /**
    * Maps section Script
    * ------------------------------------------------------------------------------
@@ -4469,38 +4475,38 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
    *
    * @namespace map
    */
-  
+
   theme.Maps = (function() {
     var config = {
       zoom: 14
     };
     var apiStatus = null;
     var mapsToLoad = [];
-  
+
     var errors = {
       addressNoResults: theme.strings.addressNoResults,
       addressQueryLimit: theme.strings.addressQueryLimit,
       addressError: theme.strings.addressError,
       authError: theme.strings.authError
     };
-  
+
     var selectors = {
       section: '[data-section-type="map"]',
       map: "[data-map]",
       mapOverlay: "[data-map-overlay]"
     };
-  
+
     var classes = {
       mapError: "map-section--load-error",
       errorMsg: "map-section__error errors text-center"
     };
-  
+
     // Global function called by Google on auth errors.
     // Show an auto error message on all map instances.
     // eslint-disable-next-line camelcase, no-unused-vars
     window.gm_authFailure = function() {
       if (!Shopify.designMode) return;
-  
+
       if (Shopify.designMode) {
         $(selectors.section).addClass(classes.mapError);
         $(selectors.map).remove();
@@ -4513,19 +4519,19 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         );
       }
     };
-  
+
     function Map(container) {
       this.$container = $(container);
       this.$map = this.$container.find(selectors.map);
       this.key = this.$map.data("api-key");
-  
+
       if (typeof this.key !== "string" || this.key === "") {
         return;
       }
-  
+
       if (apiStatus === "loaded") {
         var self = this;
-  
+
         // Check if the script has previously been loaded with this key
         var $script = $('script[src*="' + this.key + '&"]');
         if ($script.length === 0) {
@@ -4540,7 +4546,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         }
       } else {
         mapsToLoad.push(this);
-  
+
         if (apiStatus !== "loading") {
           apiStatus = "loading";
           if (typeof window.google === "undefined") {
@@ -4554,34 +4560,34 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         }
       }
     }
-  
+
     function initAllMaps() {
       // API has loaded, load all Map instances in queue
       $.each(mapsToLoad, function(index, instance) {
         instance.createMap();
       });
     }
-  
+
     function geolocate($map) {
       var deferred = $.Deferred();
       var geocoder = new google.maps.Geocoder();
       var address = $map.data("address-setting");
-  
+
       geocoder.geocode({ address: address }, function(results, status) {
         if (status !== google.maps.GeocoderStatus.OK) {
           deferred.reject(status);
         }
-  
+
         deferred.resolve(results);
       });
-  
+
       return deferred;
     }
-  
+
     Map.prototype = $.extend({}, Map.prototype, {
       createMap: function() {
         var $map = this.$map;
-  
+
         return geolocate($map)
           .then(
             function(results) {
@@ -4594,16 +4600,16 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
                 disableDoubleClickZoom: true,
                 disableDefaultUI: true
               };
-  
+
               var map = (this.map = new google.maps.Map($map[0], mapOptions));
               var center = (this.center = map.getCenter());
-  
+
               //eslint-disable-next-line no-unused-vars
               var marker = new google.maps.Marker({
                 map: map,
                 position: map.getCenter()
               });
-  
+
               google.maps.event.addDomListener(window, "resize", function() {
                 google.maps.event.trigger(map, "resize");
                 map.setCenter(center);
@@ -4613,7 +4619,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           )
           .fail(function() {
             var errorMessage;
-  
+
             switch (status) {
               case "ZERO_RESULTS":
                 errorMessage = errors.addressNoResults;
@@ -4628,7 +4634,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
                 errorMessage = errors.addressError;
                 break;
             }
-  
+
             // Show errors only to merchant in the editor.
             if (Shopify.designMode) {
               $map
@@ -4644,7 +4650,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             }
           });
       },
-  
+
       onUnload: function() {
         if (this.$map.length === 0) {
           return;
@@ -4652,10 +4658,10 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         google.maps.event.clearListeners(this.map, "resize");
       }
     });
-  
+
     return Map;
   })();
-  
+
   /**
    * Slideshow section Script
    * ------------------------------------------------------------------------------
@@ -4663,7 +4669,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
    *
    * @namespace product
    */
-  
+
   theme.Slideshow = (function() {
     /**
      * Product section constructor. Runs on page load as well as Theme Editor
@@ -4676,22 +4682,22 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       this.$slides.offsetHeight;
       this.initFlickity();
     }
-  
+
     Slideshow.prototype = $.extend({}, Slideshow.prototype, {
       initFlickity: function() {
         var $slides = this.$slides;
         var $button = this.$container.find(".btn--next");
         var auto_play = false;
         var wrap_around = false;
-  
+
         if (this.$container.attr("data-auto-rotate")) {
           auto_play = this.$container.data("slide-speed");
         }
-  
+
         if (this.$container.attr("data-wrap-around")) {
           wrap_around = true;
         }
-  
+
         $slides.flickity({
           // options
           autoPlay: auto_play,
@@ -4702,19 +4708,19 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           prevNextButtons: false,
           pageDots: false
         });
-  
+
         $button.on("click", function() {
           $slides.flickity("next", true);
         });
       },
-  
+
       onBlockSelect: function(evt) {
         this.$block = $(evt.target);
         this.$index = this.$block.index();
         var $slides = this.$block.parents(".slideshow__slides");
         $slides.flickity("select", this.$index, true);
       },
-  
+
       /**
        * Event callback for Theme Editor `section:unload` event
        */
@@ -4722,17 +4728,17 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         this.$container.off(this.namespace);
       }
     });
-  
+
     return Slideshow;
   })();
-  
+
   /**
    * Video section Script
    * ------------------------------------------------------------------------------
    *
    * @namespace Videos
    */
-  
+
   theme.Video = (function() {
     /**
      * Product section constructor. Runs on page load as well as Theme Editor
@@ -4743,22 +4749,22 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       this.$container = $(container);
       this.sectionSelector =
         "#shopify-section-" + $(container).data("section-id");
-  
+
       var selectors =
         this.sectionSelector +
         ' iframe[src*="youtube.com/embed"],' +
         this.sectionSelector +
         ' iframe[src*="player.vimeo"]';
-  
+
       slate.rte.wrapIframe({
         $iframes: $(selectors),
         iframeWrapperClass: "rte__video-wrapper"
       });
     }
-  
+
     return Video;
   })();
-  
+
   theme.Cascade = (function() {
     function Cascade(container) {
       this.$container = $(container);
@@ -4766,18 +4772,18 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       this.$videoModaalLinks = $("[data-video-modaal]", this.$container);
       this.sectionSelector =
         "#shopify-section-" + $(container).data("section-id");
-  
+
       var selectors =
         this.sectionSelector +
         ' iframe[src*="youtube.com/embed"],' +
         this.sectionSelector +
         ' iframe[src*="player.vimeo"]';
-  
+
       slate.rte.wrapIframe({
         $iframes: $(selectors),
         iframeWrapperClass: "rte__video-wrapper"
       });
-  
+
       //Vimeo thumbnails
       this.vimeoThumbs = this.$container.find("*[data-vimeo-thumb]");
       this.vimeoThumbs.each(function() {
@@ -4796,12 +4802,12 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           }
         });
       });
-  
+
       var originLeft = true;
       if ( $(container).data("first-item") === 'right' ) {
         originLeft = false;
       };
-      
+
       this.$masonryGrid = this.$cascade.masonry({
         itemSelector: ".item",
         columnWidth: ".column-sizer",
@@ -4810,13 +4816,13 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         isLayoutInstant: true,
         originLeft: originLeft
       });
-  
+
       var $this = this;
       $(window).load(function() {
         $this.$masonryGrid.masonry("reloadItems");
         $this.$masonryGrid.masonry();
       });
-  
+
       var resizeTimer;
       $(window).on("resize", function(e) {
         clearTimeout(resizeTimer);
@@ -4824,14 +4830,16 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           $this.$masonryGrid.masonry();
         }, 300);
       });
-  
+
       this.$container.find(".item").addClass("ready");
-  
+      console.log('inside cascade function', this.$container.find(".item"));
+
       if (this.$container.data("fade-in") === true) {
+        console.log('theme.fadeIn 1');
         theme.fadeIn(this.$container);
       }
     }
-  
+
     Cascade.prototype = $.extend({}, Cascade.prototype, {
       onReorder: function() {
         this.$masonryGrid.masonry("reloadItems");
@@ -4848,26 +4856,26 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         });
       }
     });
-  
+
     /**
      * Event callback for Theme Editor `section:unload` event
      */
-  
+
     return Cascade;
   })();
-  
+
   /**
    * Collection section Script
    * ------------------------------------------------------------------------------
    *
    * @namespace Collection
    */
-  
+
   theme.Collection = (function() {
     var constants = {
       SORT_BY: "sort_by"
     };
-  
+
     /**
      * Product section constructor. Runs on page load as well as Theme Editor
      * `section:load` events.
@@ -4883,10 +4891,10 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       this.defaultSort = this._getDefaultSortValue();
       this.$sortSelect.on("change", this._onSortChange.bind(this));
       this.$cascade = this.$container.find(".items");
-  
+
       this.changeView();
       this.filterToggle();
-  
+
       Shopify.queryParams = {};
       if (location.search.length) {
         for (
@@ -4902,7 +4910,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           }
         }
       }
-  
+
       // Expand tags
       var _this = this;
       this.$tagExpand.on("click", function() {
@@ -4916,7 +4924,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         _this.$tagCondense.removeClass("hide");
         $(this).addClass("hide");
       });
-  
+
       this.$tagCondense.on("click", function() {
         $(this)
           .parents("ul")
@@ -4928,12 +4936,12 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         _this.$tagExpand.removeClass("hide");
         $(this).addClass("hide");
       });
-  
+
       if (this.$cascade.length) {
         this.cascade();
       }
     }
-  
+
     Collection.prototype = $.extend({}, Collection.prototype, {
       filterToggle: function() {
         this.$container.on("click", "[data-tag-filter-mobile-trigger]", function(
@@ -4966,7 +4974,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         grid.imagesLoaded().progress(function() {
           grid.masonry("layout");
         });
-  
+
         var resizeTimer;
         $(window).on("resize", function(e) {
           clearTimeout(resizeTimer);
@@ -4974,9 +4982,10 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
             grid.masonry();
           }, 300);
         });
-  
+
         this.$container.find(".item").addClass("ready");
         if (this.$container.data("fade-in") === true) {
+          console.log('theme.fadeIn 2')
           theme.fadeIn(this.$container);
         }
       },
@@ -4985,22 +4994,22 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         Shopify.queryParams.sort_by = sort;
         location.search = $.param(Shopify.queryParams);
       },
-  
+
       _getSortValue: function() {
         return this.$sortSelect.val() || this.defaultSort;
       },
-  
+
       _getDefaultSortValue: function() {
         return $("#SortBy", this.$container).val();
       },
-  
+
       changeView: function() {
         if (this.$changeView.length) {
           this.$changeView.on("click", function() {
             var view = $(this).data("view"),
               url = document.URL,
               hasParams = url.indexOf("?") > -1;
-  
+
             if (hasParams) {
               window.location = replaceUrlParam(url, "view", view);
             } else {
@@ -5016,17 +5025,17 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         this.$container.off(this.namespace);
       }
     });
-  
+
     return Collection;
   })();
-  
+
   /**
    * Blog section Script
    * ------------------------------------------------------------------------------
    *
    * @namespace Blog
    */
-  
+
   theme.Blog = (function() {
     /**
      * Product section constructor. Runs on page load as well as Theme Editor
@@ -5039,12 +5048,12 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       this.changeView();
       this.filterToggle();
       this.$cascade = this.$container.find(".items");
-  
+
       if (this.$cascade.length) {
         this.cascade();
       }
     }
-  
+
     Blog.prototype = $.extend({}, Blog.prototype, {
       changeView: function() {
         if (this.$changeView.length) {
@@ -5060,7 +5069,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
           });
         }
       },
-  
+
       filterToggle: function() {
         this.$container.on("click", "[data-tag-filter-mobile-trigger]", function(
           evt
@@ -5090,6 +5099,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         });
         this.$container.find(".item").addClass("ready");
         if (this.$container.data("fade-in") === true) {
+          console.log('theme.fadein 2')
           theme.fadeIn(this.$container);
         }
       },
@@ -5100,17 +5110,17 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         this.$container.off(this.namespace);
       }
     });
-  
+
     return Blog;
   })();
-  
+
   /**
    * Flickity  section Script
    * ------------------------------------------------------------------------------
    *
    * @namespace flickityOnly
    */
-  
+
   theme.flickityOnly = (function() {
     /**
      * Product section constructor. Runs on page load as well as Theme Editor
@@ -5121,10 +5131,10 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       this.$container = $(container);
       theme.mobileFlickity(this.$container);
     }
-  
+
     return flickityOnly;
   })();
-  
+
 
   /*================ Templates ================*/
   /**
@@ -5135,14 +5145,14 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
    *
    * @namespace customerAddresses
    */
-  
+
   theme.customerAddresses = (function() {
     var $newAddressForm = $("#AddressNewForm");
-  
+
     if (!$newAddressForm.length) {
       return;
     }
-  
+
     // Initialize observers on address selectors, defined in shopify_common.js
     if (Shopify) {
       new Shopify.CountryProvinceSelector(
@@ -5153,29 +5163,29 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
         }
       );
     }
-  
+
     // Initialize each edit form's country/province selector
     $(".address-country-option").each(function() {
       var formId = $(this).data("form-id");
       var countrySelector = "AddressCountry_" + formId;
       var provinceSelector = "AddressProvince_" + formId;
       var containerSelector = "AddressProvinceContainer_" + formId;
-  
+
       new Shopify.CountryProvinceSelector(countrySelector, provinceSelector, {
         hideElement: containerSelector
       });
     });
-  
+
     // Toggle new/edit address forms
     $(".address-new-toggle").on("click", function() {
       $newAddressForm.toggleClass("hide");
     });
-  
+
     $(".address-edit-toggle").on("click", function() {
       var formId = $(this).data("form-id");
       $("#EditAddress_" + formId).toggleClass("hide");
     });
-  
+
     $(".address-delete").on("click", function() {
       var $el = $(this);
       var formId = $el.data("form-id");
@@ -5189,7 +5199,7 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       }
     });
   })();
-  
+
   /**
    * Password Template Script
    * ------------------------------------------------------------------------------
@@ -5197,37 +5207,37 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
    *
    * @namespace password
    */
-  
+
   theme.customerLogin = (function() {
     var config = {
       recoverPasswordForm: "#RecoverPassword",
       hideRecoverPasswordLink: "#HideRecoverPasswordLink"
     };
-  
+
     if (!$(config.recoverPasswordForm).length) {
       return;
     }
-  
+
     checkUrlHash();
     resetPasswordSuccess();
-  
+
     $(config.recoverPasswordForm).on("click", onShowHidePasswordForm);
     $(config.hideRecoverPasswordLink).on("click", onShowHidePasswordForm);
-  
+
     function onShowHidePasswordForm(evt) {
       evt.preventDefault();
       toggleRecoverPasswordForm();
     }
-  
+
     function checkUrlHash() {
       var hash = window.location.hash;
-  
+
       // Allow deep linking to recover password form
       if (hash === "#recover") {
         toggleRecoverPasswordForm();
       }
     }
-  
+
     /**
      *  Show/Hide recover password form
      */
@@ -5235,23 +5245,23 @@ e.isObject=s,e.isObjectLike=j,e.isSymbol=p,e.isTypedArray=ot,e.stubFalse=g,e.now
       $("#RecoverPasswordForm").toggleClass("hide");
       $("#CustomerLoginForm").toggleClass("hide");
     }
-  
+
     /**
      *  Show reset password success message
      */
     function resetPasswordSuccess() {
       var $formState = $(".reset-password-success");
-  
+
       // check if reset password form was successfully submited.
       if (!$formState.length) {
         return;
       }
-  
+
       // show success message
       $("#ResetSuccess").removeClass("hide");
     }
   })();
-  
+
 
   $(document).ready(function() {
     var sections = new slate.Sections();

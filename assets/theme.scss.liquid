@@ -398,7 +398,7 @@ $line-height-10: 3rem !default;
 $line-height-11: 3.25rem !default;
 $line-height-12: 3.5rem !default;
 $line-height-13: 3.75rem !default;
-$letter-spacing: 1 !default;
+$letter-spacing: 1.2rem !default;
 $caps-letter-spacing: 0.1em !default;
 $bold-font-weight: bold !default;
 
@@ -6324,38 +6324,6 @@ Hailey Jane Custom Sections & Styles
   }
 }
 
-/* =======================================================================
-
-Hailey Jane Custom Process
-========================================================================== */
-
-.hj-custom-item {
-  border: 1px solid pink;
-  display: flex !important;
-  align-items: flex-start;
-  align-items: center;
-  padding: 0;
-  height: 300px;
-  @include media-query($medium-up) {
-    height: 500px;
-  }
-}
-
-.hj-custom-item-container {
-  &.hide-mobile {
-    display: none !important;
-    @include media-query($medium-up) {
-      display: block !important;
-    }
-  }
-  &.hide-desktop {
-    display: block !important;
-    @include media-query($medium-up) {
-      display: none !important;
-    }
-  }
-}
-
 
 /* =======================================================================
 
@@ -6399,4 +6367,133 @@ Hailey Jane Nav
   }
 }
 
-// $post-mobile
+/* =======================================================================
+
+Hailey Jane Custom Process
+========================================================================== */
+
+// .hj-custom-item {
+//   border: 1px solid pink;
+//   display: flex !important;
+//   align-items: flex-start;
+//   align-items: center;
+//   padding: 0;
+//   height: 300px;
+//   @include media-query($medium-up) {
+//     height: 500px;
+//   }
+// }
+
+// .hj-custom-item-container {
+//   &.hide-mobile {
+//     display: none !important;
+//     @include media-query($medium-up) {
+//       display: block !important;
+//     }
+//   }
+//   &.hide-desktop {
+//     display: block !important;
+//     @include media-query($medium-up) {
+//       display: none !important;
+//     }
+//   }
+// }
+
+
+.hj-process-container {
+  text-align: center;
+}
+
+.hj-cascade {
+  display: flex;
+  flex-wrap: wrap;
+  @include media-query($medium-up) {
+    margin: -20px;
+    padding: 20px 0;
+  }
+}
+
+.hj-cascade-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  flex: 0 1 100%;
+  @include media-query($medium-up) {
+    flex: 0 1 50%;
+    padding: 20px;
+  }
+
+  &.hj-cascade-item--1 {
+    order: 1;
+  }
+  &.hj-cascade-item--2 {
+    order: 2;
+  }
+  &.hj-cascade-item--3 {
+    order: 3; // change order
+    @include media-query($medium-up) {
+      order: 4;
+    }
+  }
+  &.hj-cascade-item--4 {
+    order: 4; // change order
+    @include media-query($medium-up) {
+      order: 3;
+    }
+  }
+  &.hj-cascade-item--5 {
+    order: 5;
+  }
+  &.hj-cascade-item--6 {
+    order: 6;
+  }
+  &.hj-cascade-item--7 {
+    order: 7;
+    @include media-query($medium-up) {
+      order: 8;
+    }
+  }
+  &.hj-cascade-item--8 {
+    order: 8;
+    @include media-query($medium-up) {
+      order: 7;
+    }
+  }
+  &.hj-cascade-item--9 {
+    order: 9;
+  }
+  &.hj-cascade-item--10 {
+    order: 10;
+  }
+}
+
+.hj-cascade-item {
+  animation: fadeIn ease 2s;
+  -webkit-animation: fadeIn ease 2s;
+  -moz-animation: fadeIn ease 2s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity:0;
+    transform: translateY(2rem);
+  }
+  100% {
+    opacity:1;
+    transform: translateY(0);
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+.hj-image-holder {
+  width: 100%;
+}

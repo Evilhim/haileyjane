@@ -4,30 +4,61 @@
 {%- assign font_size = 'font-size--sm md--up--font-size--m line-height--3' -%}
 {%- assign font_size = global__basic_font_size -%}
 
-{% include 'hj-cascade' %}
+<section class="hj-process page px2 max-site-width {{ global__section_with_padding_class }} lg--up--px3 md--up--pb5 mb5">
+  <div class="hj-process-container mx--auto md--up--six-eighths lg--up--four-eighths">
+    <h1 class="{{ hj__heading_font_size }} mb2">
+      {{ section.settings.heading }}
+    </h1>
+    <h3 class="f--heading mb1">
+      {{ section.settings.subheading }}
+    </h3>
+  </div>
+
+  <div class="hj-cascade-container my4">
+    {% include 'hj-cascade-flex' %}
+  </div>
+
+  <div class="hj-process-container mx--auto md--up--six-eighths lg--up--four-eighths md--up--py4">
+    <!-- <div class="rte {{ global__basic_font_size }}">
+      {{ section.settings.paragraph }}
+    </div> -->
+    <h3 class="f--heading mb1">
+      {{ section.settings.paragraph }}
+    </h3>
+  </div>
+</section>
+
+<!-- {% include 'hj-cascade' %} -->
 
 {% schema %}
 {
   "name": "HJ Custom Process",
   "settings": [
     {
-       "type": "select",
-       "id": "first_item",
-       "label": "First block position",
-       "options": [
-          { "value": "left", "label": "Top left"},
-          { "value": "right ", "label": "Top right"}
-       ]
+      "type": "header",
+      "content": "Heading"
     },
     {
-       "type": "select",
-       "id": "color_scheme",
-       "label": "Color scheme",
-       "options": [
-          { "value": "primary", "label": "Primary"},
-          { "value": "secondary ", "label": "Secondary"},
-          { "value": "tertiary", "label": "Tertiary"}
-       ]
+      "id": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "Custom Process"
+    },
+    {
+      "id": "subheading",
+      "type": "text",
+      "label": "Subheading",
+      "default": "Why this is special"
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "id": "paragraph",
+      "type": "richtext",
+      "label": "Text",
+      "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
     }
   ],
   "blocks": [

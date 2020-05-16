@@ -1,0 +1,67 @@
+<div class="hj-cascade">
+  {%- for block in section.blocks -%}
+    <div class="hj-cascade-item hj-cascade-item--{{forloop.index}}">
+
+      {% comment %}
+      /* ============================================================================
+        Image
+      ============================================================================== *
+      {% endcomment %}
+      {% if block.type == 'image' %}
+      {% if block.settings.image %}
+      {% assign image = block.settings.image %}
+      {% assign image_ratio = block.settings.image.aspect_ratio  | plus: 0 %}
+          <div class="hj-image-holder image-holder mx--auto lg--up--mx--auto">
+
+            {% include 'responsive-image' with
+              image: image,
+              max_width: 2000,
+              max_height: 2000
+            %}
+
+          </div>
+        {% else %}
+          <div class="onboarding-image">
+            <div class="placeholder-img-wrapper {{ placeholder_bg }}">
+              <div style="padding-top:{% cycle '66.6', '133.33', '100' %}%;" class="relative">
+                {{ 'image' | placeholder_svg_tag }}
+              </div>
+            </div>
+          </div>
+      {% endif %}
+      {% endif %}
+
+      {% comment %}
+      /* ============================================================================
+        Rich Text
+      ============================================================================== *
+      {% endcomment %}
+      {% if block.type == 'rich_text' %}
+        <div class="hj-cascade__text">
+          <div class="seven-eighths mx--auto wd--two-thirds">
+            {% if block.settings.heading != blank   %}
+              <h1 class="f--heading mb1">
+                {{ block.settings.heading }}
+              </h1>
+              <h3 class="f--heading mb1">
+                {{ block.settings.subheading }}
+              </h3>
+            {% endif %}
+            {% if block.settings.rich_text != blank  %}
+            <div class="rte {{ global__basic_font_size }}">
+              {{ block.settings.rich_text }}
+            </div>
+            {% endif %}
+            {% if block.settings.cta_url != blank %}
+            <a class="inline-block {{ global__homepage_more_link }} {{ font_size }}  {{ global__link_underline }} {{ global__hover_underline }}" href="{{ block.settings.cta_url }}" >
+              {{ block.settings.cta_text }}
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  {%- endfor -%}
+</div>
+
+
