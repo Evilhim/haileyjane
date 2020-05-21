@@ -51,7 +51,11 @@
 {%- assign preview_image = product.featured_media.preview_image -%}
 {% if preview_image %}
 
-  <div class="hj-product-grid-item relative" style="z-index:2;">
+<!-- Force square cropping -->
+{%- assign force_crop = true -%}
+{%- assign ratio = 1 -%}
+
+<div class="hj-product-grid-item relative" style="z-index:2;">
     <a href="{{ product.url | within: collection }}" class="">
       {% include 'responsive-image' with
         image: preview_image

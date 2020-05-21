@@ -5353,9 +5353,12 @@ Header Active (Modal)
     opacity: 1;
   }
 
-  .announcement-bar,
-  .header__logo {
+  .announcement-bar {
     opacity: 0;
+    pointer-events: none;
+  }
+
+  .header__logo {
     pointer-events: none;
   }
 
@@ -5389,10 +5392,10 @@ Header Active (Modal)
     z-index: -1;
   }
 
-  .header__meta {
-    flex-grow: 0;
-    flex-basis: auto;
-  }
+  // .header__meta {
+  //   flex-grow: 0;
+  //   flex-basis: auto;
+  // }
 
   .site-nav {
     white-space: normal;

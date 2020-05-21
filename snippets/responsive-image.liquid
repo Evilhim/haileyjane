@@ -37,9 +37,11 @@
     - greater than 1.0 is landscape
   {%- endcomment -%}
   {%- if ratio <= 1 -%}
+    {%- assign kim = 1 -%}
     {%- assign max_height_image = image.height | at_most: max_height -%}
     {%- assign max_width_image = max_height_image | times: ratio -%}
   {%- else -%}
+    {%- assign kim = 2 -%}
     {%- assign max_width_image = image.width | at_most: max_width -%}
     {%- assign max_height_image = max_width_image | divided_by: ratio -%}
   {%- endif -%}
@@ -82,7 +84,7 @@
 {%- endcapture -%}
 {%- assign image_widths = image_widths | strip -%}
 
-<div id="ImageWrapper-{{ image.id }}-{{ responsive_image_counter }}" data-image-id="{{ image.id }}" class="responsive-image__wrapper {{ wrapper_class }} {% if force_crop %}force-crop{% endif %}" {{ wrapper_attributes }}>
+<div id="ImageWrapper-{{ image.id }}-{{ responsive_image_counter }}" data-image-id="{{ image.id }}" class="responsive-image__wrapper {{ wrapper_class }}" {{ wrapper_attributes }}>
   <img id="Image-{{ image.id }}-{{ responsive_image_counter }}"
     class="responsive-image__image lazyload {{ image_class }}"
     src="{{ image | img_url: '300x' }}"

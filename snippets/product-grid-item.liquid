@@ -77,12 +77,9 @@
         {% endif %}
       {% endif %}
 
-      {%- assign ratio = preview_image.aspect_ratio -%}
-      {%- assign force_crop = false -%}
-      {%- if ratio < 0.5 -%}
-        {%- assign force_crop = true -%}
-        {%- assign ratio = 1 -%}
-      {%- endif -%}
+      <!-- Force square cropping -->
+      {%- assign force_crop = true -%}
+      {%- assign ratio = 1 -%}
 
 
       {% include 'responsive-image' with
