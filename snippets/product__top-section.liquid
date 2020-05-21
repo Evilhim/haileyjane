@@ -1,11 +1,7 @@
 <div class="{% if product.media.size > 1 %}lg--up--seven-eighths{% endif %} mx--auto">
   <div class="grid">
-
-
     <div class="grid__item md--up--one-half">
       <div class="product__images relative md--up--text-align--right font-size--0">
-
-
 
         {% if featured_media != blank %}
         {% assign featured_media_class = 'one-whole md--up--five-sixths' %}
@@ -116,8 +112,8 @@
     </div>
 
     <div class="grid__item md--up--one-half{% if current_variant.unit_price_measurement %} has-unit-price{% endif %}" data-product-description-container>
-      <div class="{% unless description_under_add_to_cart %}wd--pt3 lg--up--pl3 wd--pl4 {% endunless %} ">
-        <div class="px2 mt3 max-width--1 md--up--pt0 lg--up--px3">
+      <div class="{% unless description_under_add_to_cart %}lg--up--pl3 wd--pl4 {% endunless %} ">
+        <div class="px2 max-width--1 md--up--pt0 lg--up--px3">
 
           {%- if feature_product -%}
           <a class="color--{{ section_color }}-text" href="{{ product.url }}"><h2 class="{{ global__heading_font_size }} m0 mb1">{{ product.title }}</h2></a>
