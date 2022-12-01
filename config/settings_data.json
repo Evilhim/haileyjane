@@ -85,11 +85,8 @@
           "1571871673435": {
             "type": "banner",
             "settings": {
-              "image": "shopify:\/\/shop_images\/heroimage.jpg",
-              "image_mobile": "",
               "image_style": "fit_content",
-              "overlay_text_color": "white",
-              "logo_alternate": ""
+              "overlay_text_color": "white"
             }
           }
         },
@@ -98,7 +95,6 @@
         ],
         "settings": {
           "show_cart_icon": true,
-          "logo": "shopify:\/\/shop_images\/HJ.png",
           "logo_max_width": 210,
           "sticky_header": true,
           "main_linklist": "main-menu",
@@ -143,7 +139,6 @@
           "1535970800735"
         ],
         "settings": {
-          "logo": "",
           "show_payment_icons": true,
           "color_combination": "secondary"
         }
@@ -154,7 +149,6 @@
           "1524637029643-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/intro_img.jpg",
               "url": "",
               "block_width_mobile": "half",
               "block_width": "half"
@@ -175,7 +169,6 @@
           "1524637029643-1": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/custom_img2.jpg",
               "url": "",
               "block_width_mobile": "half",
               "block_width": "half"
@@ -211,7 +204,6 @@
           "1524638071060-1": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/collection_img3.jpg",
               "url": "",
               "block_width_mobile": "half",
               "block_width": "half"
@@ -220,7 +212,7 @@
           "1524638071060-3": {
             "type": "rich_text",
             "settings": {
-              "heading": "new collection spring 2020",
+              "heading": "new collection winter 2022",
               "rich_text": "",
               "cta_url": "",
               "cta_text": "Shop now",
@@ -232,7 +224,6 @@
           "1524638071060-2": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/atelier_img.jpg",
               "url": "",
               "block_width_mobile": "half",
               "block_width": "half"
@@ -268,7 +259,6 @@
           "1587085396861": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/custom_img.jpg",
               "url": "",
               "block_width_mobile": "half",
               "block_width": "half"
@@ -289,7 +279,6 @@
           "1587085439779": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/collection_img2.jpg",
               "url": "",
               "block_width_mobile": "half",
               "block_width": "half"
@@ -400,7 +389,6 @@
       "1587086136156": {
         "type": "image-with-text",
         "settings": {
-          "feature_image": "shopify:\/\/shop_images\/collection_img_0511fe16-7e84-40ef-92de-b5bccdf184d2.jpg",
           "heading": "Newsletter sign up",
           "text": "<p>We can put the newsletter email input box here<\/p>",
           "cta_url": "",
@@ -417,7 +405,6 @@
           "1587086677498-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/mood1.jpg",
               "url": "",
               "caption": ""
             }
@@ -425,7 +412,6 @@
           "1587086677498-1": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/mood.jpg",
               "url": "",
               "caption": ""
             }
@@ -433,7 +419,6 @@
           "1587086677498-2": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/mood4.jpg",
               "url": "",
               "caption": ""
             }
@@ -738,15 +723,18 @@
           "blocks": {
             "1581474076728-0": {
               "type": "image",
-              "settings": {}
+              "settings": {
+              }
             },
             "1581474076728-1": {
               "type": "image",
-              "settings": {}
+              "settings": {
+              }
             },
             "1581474076728-2": {
               "type": "image",
-              "settings": {}
+              "settings": {
+              }
             }
           },
           "block_order": [
@@ -1242,27 +1230,33 @@
           "blocks": {
             "1581474076728-0": {
               "type": "image",
-              "settings": {}
+              "settings": {
+              }
             },
             "1581474076728-1": {
               "type": "image",
-              "settings": {}
+              "settings": {
+              }
             },
             "1581474076728-2": {
               "type": "image",
-              "settings": {}
+              "settings": {
+              }
             },
             "1581474076728-3": {
               "type": "image",
-              "settings": {}
+              "settings": {
+              }
             },
             "1581474076728-4": {
               "type": "image",
-              "settings": {}
+              "settings": {
+              }
             },
             "1581474076728-5": {
               "type": "image",
-              "settings": {}
+              "settings": {
+              }
             }
           },
           "block_order": [
@@ -1725,15 +1719,18 @@
           "blocks": {
             "1581474076728-0": {
               "type": "image",
-              "settings": {}
+              "settings": {
+              }
             },
             "1581474076728-1": {
               "type": "image",
-              "settings": {}
+              "settings": {
+              }
             },
             "1581474076728-2": {
               "type": "image",
-              "settings": {}
+              "settings": {
+              }
             }
           },
           "block_order": [
