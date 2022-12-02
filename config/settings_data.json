@@ -7,8 +7,8 @@
     "accent_text_transform": "none",
     "header_navigation_typeface": "main",
     "header_navigation_text_transform": "none",
-    "color_primary_text": "#313130",
-    "color_primary_background": "#ffffff",
+    "color_primary_text": "#ffffff",
+    "color_primary_background": "#000000",
     "color_primary_accent": "#c09090",
     "color_primary_meta": "#cb493c",
     "color_secondary_text": "#313130",
@@ -85,10 +85,11 @@
           "1571871673435": {
             "type": "banner",
             "settings": {
-              "image_mobile": "shopify:\/\/shop_images\/IMG-20221201-WA0002.jpg",
+              "image": "shopify:\/\/shop_images\/LOGO_PNG.png",
+              "image_mobile": "shopify:\/\/shop_images\/LOGO_PNG.png",
               "image_style": "fit_content",
               "overlay_text_color": "white",
-              "logo_alternate": "shopify:\/\/shop_images\/IMG-20221201-WA0002.jpg"
+              "logo_alternate": "shopify:\/\/shop_images\/LOGO_PNG.png"
             }
           }
         },
@@ -151,6 +152,7 @@
           "1524637029643-0": {
             "type": "image",
             "settings": {
+              "image": "shopify:\/\/shop_images\/asimg2.jpg",
               "url": "",
               "block_width_mobile": "half",
               "block_width": "half"
@@ -171,6 +173,7 @@
           "1524637029643-1": {
             "type": "image",
             "settings": {
+              "image": "shopify:\/\/shop_images\/f7a8392e3e6daa61f63f29b28e0d2168.jpg",
               "url": "",
               "block_width_mobile": "half",
               "block_width": "half"
