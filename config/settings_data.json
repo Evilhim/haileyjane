@@ -264,6 +264,7 @@
           "1587085396861": {
             "type": "image",
             "settings": {
+              "image": "shopify:\/\/shop_images\/pngwing.com_2.png",
               "url": "",
               "block_width_mobile": "half",
               "block_width": "half"
@@ -284,6 +285,7 @@
           "1587085439779": {
             "type": "image",
             "settings": {
+              "image": "shopify:\/\/shop_images\/pngwing.com_3.png",
               "url": "",
               "block_width_mobile": "half",
               "block_width": "half"
@@ -435,7 +437,7 @@
           "1587086677498-2"
         ],
         "settings": {
-          "title": "musings | style inspiration \/ mood",
+          "title": "Style inspiration",
           "subheading": "",
           "color_scheme": "primary"
         }
