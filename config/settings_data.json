@@ -44,7 +44,7 @@
     "ajax_cart_method": "modal",
     "favicon": "",
     "checkout_header_image": "shopify:\/\/shop_images\/haileyjane_katrinaramsvik-3.jpg",
-    "checkout_logo_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/LOGO_PNG.png",
     "checkout_logo_position": "left",
     "checkout_logo_size": "medium",
     "checkout_body_background_image": "shopify:\/\/shop_images\/haileyjane_katrinaramsvik-3.jpg",
