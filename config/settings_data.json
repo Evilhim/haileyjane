@@ -149,7 +149,7 @@
             "type": "rich_text",
             "settings": {
               "heading": "every day magic - jewels and gems for the lovestruck renegade.",
-              "rich_text": "<p><\/p>",
+              "rich_text": "",
               "cta_url": "",
               "cta_text": "Shop now",
               "text_align": "text-align--left",
@@ -374,8 +374,8 @@
       "1587085999491": {
         "type": "featured-collection",
         "settings": {
-          "title": "Shop > Best seller ?",
-          "collection": "all",
+          "title": "Shop > Best seller",
+          "collection": "new-arrivals",
           "no_products": "6",
           "subheading": "",
           "show_collection_link": false,
