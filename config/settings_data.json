@@ -454,10 +454,64 @@
           "text": "<p>Receive special offers and first look at new products.<\/p>",
           "color_scheme": "primary"
         }
+      },
+      "b6e4c2e3-7e5e-4b1c-ad64-be8a8064a276": {
+        "type": "collection-list",
+        "blocks": {
+          "b6e4c2e3-7e5e-4b1c-ad64-be8a8064a276-16703158297415f924-0": {
+            "type": "collection",
+            "settings": {
+              "collection": "new-arrivals",
+              "text_color": "primary",
+              "show_collection_link": true,
+              "cta_text": "Shop now"
+            }
+          },
+          "b6e4c2e3-7e5e-4b1c-ad64-be8a8064a276-16703158297415f924-1": {
+            "type": "collection",
+            "settings": {
+              "collection": "earrings",
+              "text_color": "primary",
+              "show_collection_link": true,
+              "cta_text": "Shop now"
+            }
+          },
+          "b6e4c2e3-7e5e-4b1c-ad64-be8a8064a276-16703158297415f924-2": {
+            "type": "collection",
+            "settings": {
+              "collection": "ledies-ring",
+              "text_color": "primary",
+              "show_collection_link": true,
+              "cta_text": "Shop now"
+            }
+          },
+          "370988cc-513d-4432-979f-10c0b2caf6a2": {
+            "type": "collection",
+            "settings": {
+              "collection": "nacklace",
+              "text_color": "primary",
+              "show_collection_link": true,
+              "cta_text": "Shop now"
+            }
+          }
+        },
+        "block_order": [
+          "b6e4c2e3-7e5e-4b1c-ad64-be8a8064a276-16703158297415f924-0",
+          "b6e4c2e3-7e5e-4b1c-ad64-be8a8064a276-16703158297415f924-1",
+          "b6e4c2e3-7e5e-4b1c-ad64-be8a8064a276-16703158297415f924-2",
+          "370988cc-513d-4432-979f-10c0b2caf6a2"
+        ],
+        "settings": {
+          "title": "Collection list",
+          "heading_text_align": "text-align--left",
+          "text_position": "over",
+          "color_scheme": "primary"
+        }
       }
     },
     "content_for_index": [
       "1524637029643",
+      "b6e4c2e3-7e5e-4b1c-ad64-be8a8064a276",
       "1587085631459",
       "1525403578042",
       "1587085999491",
