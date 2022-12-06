@@ -374,8 +374,8 @@
         "type": "featured-collection",
         "settings": {
           "title": "Shop > Best seller ?",
-          "collection": "new",
-          "no_products": "8",
+          "collection": "all",
+          "no_products": "6",
           "subheading": "",
           "show_collection_link": false,
           "color_scheme": "primary"
