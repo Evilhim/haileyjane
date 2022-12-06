@@ -339,7 +339,7 @@
           "color_scheme": "primary",
           "no_posts": 12,
           "show_collection_image": false,
-          "enable_tag_filter": true,
+          "enable_tag_filter": false,
           "capitalize_tags": true,
           "enable_sort_filter": true
         }
