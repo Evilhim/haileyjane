@@ -12,11 +12,11 @@
     "color_primary_accent": "#ffffff",
     "color_primary_meta": "#b1b1b1",
     "color_secondary_text": "#d4af37",
-    "color_secondary_background": "#d4af37",
+    "color_secondary_background": "#2d2d2d",
     "color_secondary_accent": "#ff5f5f",
     "color_secondary_meta": "#b1b1b1",
     "color_tertiary_text": "#ffffff",
-    "color_tertiary_background": "#ff5f5f",
+    "color_tertiary_background": "#080000",
     "color_tertiary_accent": "#2d2d2d",
     "color_tertiary_meta": "#e5e5e5",
     "color_borders": "#e5e5e5",
@@ -130,7 +130,7 @@
         "settings": {
           "logo": "shopify:\/\/shop_images\/LOGO_PNG_c265e140-ec4e-44cf-bb56-00e93bd98368.png",
           "show_payment_icons": true,
-          "color_combination": "secondary"
+          "color_combination": "primary"
         }
       },
       "1524637029643": {
@@ -313,7 +313,7 @@
           "show_vendor": false,
           "hide_drop_down_labels": false,
           "show_share_buttons": true,
-          "enable_image_zoom": false,
+          "enable_image_zoom": true,
           "enable_video_looping": false,
           "enable_split_description": false,
           "description_color_scheme": "primary",
@@ -439,6 +439,14 @@
         "settings": {
           "title": "Sign up to our newsletter",
           "text": "<p>Receive special offers and first look at new products.<\/p>",
+          "color_scheme": "primary"
+        }
+      },
+      "product-recommendations": {
+        "type": "product-recommendations",
+        "settings": {
+          "show_product_recommendations": true,
+          "product_recommendations_heading": "You may also like",
           "color_scheme": "primary"
         }
       }
