@@ -544,7 +544,7 @@
         "settings": {
           "title": "Collection list",
           "heading_text_align": "text-align--left",
-          "text_position": "over",
+          "text_position": "under",
           "color_scheme": "primary"
         }
       }
