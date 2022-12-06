@@ -81,19 +81,6 @@
     "sections": {
       "header": {
         "type": "header",
-        "blocks": {
-          "1571871673435": {
-            "type": "banner",
-            "settings": {
-              "image_style": "fit_content",
-              "overlay_text_color": "white",
-              "logo_alternate": "shopify:\/\/shop_images\/LOGO_PNG.png"
-            }
-          }
-        },
-        "block_order": [
-          "1571871673435"
-        ],
         "settings": {
           "show_cart_icon": true,
           "logo": "shopify:\/\/shop_images\/LOGO_PNG_c265e140-ec4e-44cf-bb56-00e93bd98368.png",
@@ -151,7 +138,7 @@
           "1524637029643-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/toppng.com-designer-jewellery-jewellery-814x712.png",
+              "image": "shopify:\/\/shop_images\/pngwing.com_3.png",
               "url": "",
               "block_width_mobile": "half",
               "block_width": "half"
@@ -172,7 +159,7 @@
           "1524637029643-1": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/pngwing.com_1.png",
+              "image": "shopify:\/\/shop_images\/decor-g9ba5156c9_1280.png",
               "url": "",
               "block_width_mobile": "half",
               "block_width": "half"
