@@ -12,7 +12,7 @@
     "color_primary_accent": "#ffffff",
     "color_primary_meta": "#b1b1b1",
     "color_secondary_text": "#d4af37",
-    "color_secondary_background": "#080000",
+    "color_secondary_background": "#d4af37",
     "color_secondary_accent": "#ff5f5f",
     "color_secondary_meta": "#b1b1b1",
     "color_tertiary_text": "#ffffff",
@@ -84,7 +84,7 @@
         "settings": {
           "show_cart_icon": true,
           "logo": "shopify:\/\/shop_images\/LOGO_PNG_c265e140-ec4e-44cf-bb56-00e93bd98368.png",
-          "logo_max_width": 180,
+          "logo_max_width": 250,
           "sticky_header": true,
           "main_linklist": "main-menu",
           "show_all_navigation_links": true,
