@@ -209,7 +209,8 @@
           "1524638071060-1": {
             "type": "image",
             "settings": {
-              "url": "",
+              "image": "shopify:\/\/shop_images\/pngwing.com_2_d2a21309-f932-4988-bc64-1a7a258ce5bb.png",
+              "url": "shopify:\/\/collections\/new-arrivals",
               "block_width_mobile": "half",
               "block_width": "half"
             }
