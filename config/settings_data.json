@@ -85,8 +85,6 @@
           "1571871673435": {
             "type": "banner",
             "settings": {
-              "image": "shopify:\/\/shop_images\/LOGO_PNG.png",
-              "image_mobile": "shopify:\/\/shop_images\/LOGO_PNG.png",
               "image_style": "fit_content",
               "overlay_text_color": "white",
               "logo_alternate": "shopify:\/\/shop_images\/LOGO_PNG.png"
@@ -98,6 +96,7 @@
         ],
         "settings": {
           "show_cart_icon": true,
+          "logo": "shopify:\/\/shop_images\/LOGO_PNG_c265e140-ec4e-44cf-bb56-00e93bd98368.png",
           "logo_max_width": 180,
           "sticky_header": true,
           "main_linklist": "main-menu",
