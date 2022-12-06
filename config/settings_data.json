@@ -32,9 +32,9 @@
     "share_twitter": true,
     "share_pinterest": true,
     "social_twitter_link": "",
-    "social_facebook_link": "https:\/\/www.facebook.com\/haileyjanejewellery\/",
-    "social_pinterest_link": "https:\/\/www.pinterest.ca\/HaileyJaneJewellery\/",
-    "social_instagram_link": "https:\/\/www.instagram.com\/haileyjanejewellery\/",
+    "social_facebook_link": "",
+    "social_pinterest_link": "",
+    "social_instagram_link": "",
     "social_snapchat_link": "",
     "social_tumblr_link": "",
     "social_youtube_link": "",
@@ -148,7 +148,7 @@
             "type": "rich_text",
             "settings": {
               "heading": "every day magic - jewels and gems for the lovestruck renegade.",
-              "rich_text": "",
+              "rich_text": "<p><\/p>",
               "cta_url": "",
               "cta_text": "Shop now",
               "text_align": "text-align--left",
@@ -169,7 +169,7 @@
             "type": "rich_text",
             "settings": {
               "heading": "Pure Moissanite diamond, Genuine Gold, Genuine Deals",
-              "rich_text": "",
+              "rich_text": "<p><\/p>",
               "cta_url": "",
               "cta_text": "Shop now",
               "text_align": "text-align--right",
@@ -205,7 +205,7 @@
             "type": "rich_text",
             "settings": {
               "heading": "new collection winter 2022",
-              "rich_text": "",
+              "rich_text": "<p><\/p>",
               "cta_url": "",
               "cta_text": "Shop now",
               "text_align": "text-align--left",
@@ -226,7 +226,7 @@
             "type": "rich_text",
             "settings": {
               "heading": "atelier - custom workshops brief description",
-              "rich_text": "",
+              "rich_text": "<p><\/p>",
               "cta_url": "shopify:\/\/pages\/contact-us",
               "cta_text": "Learn More",
               "text_align": "text-align--left",
@@ -262,7 +262,7 @@
             "type": "rich_text",
             "settings": {
               "heading": "custom text goes here",
-              "rich_text": "",
+              "rich_text": "<p><\/p>",
               "cta_url": "",
               "cta_text": "Shop now",
               "text_align": "text-align--left",
@@ -283,7 +283,7 @@
             "type": "rich_text",
             "settings": {
               "heading": "together let's craft the pieces you dream of",
-              "rich_text": "",
+              "rich_text": "<p><\/p>",
               "cta_url": "shopify:\/\/pages\/contact-us",
               "cta_text": "Get Started",
               "text_align": "text-align--right",
@@ -402,7 +402,7 @@
             "settings": {
               "image": "shopify:\/\/shop_images\/KE05925-2Y0000_1_lar.jpg",
               "url": "",
-              "caption": ""
+              "caption": "<p><\/p>"
             }
           },
           "1587086677498-1": {
@@ -410,7 +410,7 @@
             "settings": {
               "image": "shopify:\/\/shop_images\/0ad308ade0b1bd37740190dc19a94445.jpg",
               "url": "",
-              "caption": ""
+              "caption": "<p><\/p>"
             }
           },
           "1587086677498-2": {
@@ -418,7 +418,7 @@
             "settings": {
               "image": "shopify:\/\/shop_images\/DeMFUwoCLn_20201108103333.jpg",
               "url": "",
-              "caption": ""
+              "caption": "<p><\/p>"
             }
           }
         },
