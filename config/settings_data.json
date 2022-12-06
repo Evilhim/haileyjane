@@ -230,7 +230,8 @@
           "1524638071060-2": {
             "type": "image",
             "settings": {
-              "url": "",
+              "image": "shopify:\/\/shop_images\/pngwing.com_4.png",
+              "url": "shopify:\/\/collections\/silver-ornaments",
               "block_width_mobile": "half",
               "block_width": "half"
             }
