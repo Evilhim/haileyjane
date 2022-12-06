@@ -363,7 +363,7 @@
         "type": "featured-collection",
         "settings": {
           "title": "We can move this up so images are full width",
-          "collection": "essentials",
+          "collection": "new-arrivals",
           "no_products": "8",
           "subheading": "We can easily names, prices and \"on sale\"",
           "show_collection_link": false,
@@ -537,14 +537,14 @@
     },
     "content_for_index": [
       "1524637029643",
-      "b6e4c2e3-7e5e-4b1c-ad64-be8a8064a276",
       "1587085631459",
       "1525403578042",
       "1587085999491",
       "1524638071060",
       "1587086677498",
       "1587086136156",
-      "1587087383260"
+      "1587087383260",
+      "b6e4c2e3-7e5e-4b1c-ad64-be8a8064a276"
     ]
   },
   "presets": {
