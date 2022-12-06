@@ -105,7 +105,7 @@
           "1535918576708": {
             "type": "richtext",
             "settings": {
-              "text": "<p>Use this to add additional information about your store, e.g. address \/ contact details.<\/p>"
+              "text": "<p>﻿For more details contact - +917669503066<\/p><p>﻿Physical shop- <\/p><p>A S jewellers agra, A S & sons kheragarh <\/p>"
             }
           },
           "1535918568841": {
@@ -118,7 +118,7 @@
           "1535970800735": {
             "type": "newsletter",
             "settings": {
-              "text": "<p>Receive special offers and first look at new products.<\/p>"
+              "text": "<p>Receive special offers, first look at new products and want to join our WhatsApp group <\/p>"
             }
           }
         },
@@ -244,7 +244,7 @@
         ],
         "settings": {
           "first_item": "left",
-          "color_scheme": "tertiary"
+          "color_scheme": "primary"
         }
       },
       "1525403578042": {
@@ -382,19 +382,6 @@
           "color_scheme": "primary"
         }
       },
-      "1587086136156": {
-        "type": "image-with-text",
-        "settings": {
-          "heading": "Newsletter sign up",
-          "text": "<p>We can put the newsletter email input box here<\/p>",
-          "cta_url": "",
-          "cta_text": "Shop Now",
-          "content_position": "text-align--center align--middle",
-          "text_align": "text-align--left",
-          "section_color_overlay": "white",
-          "color_scheme": "primary"
-        }
-      },
       "1587086677498": {
         "type": "gallery",
         "blocks": {
@@ -434,14 +421,6 @@
           "color_scheme": "primary"
         }
       },
-      "1587087383260": {
-        "type": "newsletter",
-        "settings": {
-          "title": "Sign up to our newsletter",
-          "text": "<p>Receive special offers and first look at new products.<\/p>",
-          "color_scheme": "primary"
-        }
-      },
       "product-recommendations": {
         "type": "product-recommendations",
         "settings": {
@@ -457,9 +436,7 @@
       "1525403578042",
       "1587085999491",
       "1524638071060",
-      "1587086677498",
-      "1587086136156",
-      "1587087383260"
+      "1587086677498"
     ]
   },
   "presets": {
