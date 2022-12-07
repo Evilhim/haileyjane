@@ -196,7 +196,7 @@
           "1524638071060-1": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/pngwing.com_2_d2a21309-f932-4988-bc64-1a7a258ce5bb.png",
+              "image": "shopify:\/\/shop_images\/pngwing.com.png",
               "url": "shopify:\/\/collections\/new-arrivals",
               "block_width_mobile": "half",
               "block_width": "half"
@@ -205,8 +205,8 @@
           "1524638071060-3": {
             "type": "rich_text",
             "settings": {
-              "heading": "new collection winter 2022",
-              "rich_text": "<p><\/p>",
+              "heading": "New Diamond collection",
+              "rich_text": "",
               "cta_url": "",
               "cta_text": "Shop now",
               "text_align": "text-align--left",
@@ -253,7 +253,6 @@
           "1587085396861": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/pngwing.com_2.png",
               "url": "",
               "block_width_mobile": "half",
               "block_width": "half"
@@ -274,7 +273,6 @@
           "1587085439779": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/pngwing.com_3.png",
               "url": "",
               "block_width_mobile": "half",
               "block_width": "half"
