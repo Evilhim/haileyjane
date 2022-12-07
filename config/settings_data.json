@@ -226,10 +226,10 @@
           "1587085928546": {
             "type": "rich_text",
             "settings": {
-              "heading": "atelier - custom workshops brief description",
-              "rich_text": "<p><\/p>",
+              "heading": "A woman needs ropes and ropes of pearls",
+              "rich_text": "",
               "cta_url": "shopify:\/\/pages\/contact-us",
-              "cta_text": "Learn More",
+              "cta_text": "",
               "text_align": "text-align--left",
               "block_width_mobile": "half",
               "block_width": "half"
