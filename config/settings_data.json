@@ -84,7 +84,7 @@
         "settings": {
           "show_cart_icon": true,
           "logo": "shopify:\/\/shop_images\/LOGO_PNG_c265e140-ec4e-44cf-bb56-00e93bd98368.png",
-          "logo_max_width": 250,
+          "logo_max_width": 350,
           "sticky_header": true,
           "main_linklist": "main-menu",
           "show_all_navigation_links": true,
