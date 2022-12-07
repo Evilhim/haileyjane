@@ -262,8 +262,8 @@
           "1587085336580": {
             "type": "rich_text",
             "settings": {
-              "heading": "custom text goes here",
-              "rich_text": "<p><\/p>",
+              "heading": "Your jewelry introduces you before you speak",
+              "rich_text": "",
               "cta_url": "",
               "cta_text": "Shop now",
               "text_align": "text-align--left",
@@ -283,10 +283,10 @@
           "1587085479663": {
             "type": "rich_text",
             "settings": {
-              "heading": "together let's craft the pieces you dream of",
-              "rich_text": "<p><\/p>",
+              "heading": "If you don’t know jewelry, know the jeweler",
+              "rich_text": "",
               "cta_url": "shopify:\/\/pages\/contact-us",
-              "cta_text": "Get Started",
+              "cta_text": "",
               "text_align": "text-align--right",
               "block_width_mobile": "half",
               "block_width": "half"
