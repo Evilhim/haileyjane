@@ -307,7 +307,7 @@
         "settings": {
           "color_scheme": "primary",
           "enable_payment_button": true,
-          "show_quantity": true,
+          "show_quantity": false,
           "show_vendor": false,
           "hide_drop_down_labels": false,
           "show_share_buttons": true,
@@ -315,7 +315,7 @@
           "enable_video_looping": false,
           "enable_split_description": false,
           "description_color_scheme": "primary",
-          "description_under_add_to_cart": false
+          "description_under_add_to_cart": true
         }
       },
       "collection-template": {
