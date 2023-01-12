@@ -305,7 +305,7 @@
       "product": {
         "type": "product",
         "settings": {
-          "color_scheme": "secondary",
+          "color_scheme": "primary",
           "enable_payment_button": true,
           "show_quantity": false,
           "show_vendor": false,
