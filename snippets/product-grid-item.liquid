@@ -82,11 +82,7 @@
       {%- assign ratio = 1 -%}
 
 
-      {% include 'responsive-image' with
-        image: preview_image
-        max_width: 2000,
-        max_height: 2000
-      %}
+      {% include 'responsive-image' with image, image: preview_image, max_width: 2000, max_height: 2000 %}
 
       {% if product.media.size > 1 and settings.products_show_second_image_on_hover %}
         {% assign hover_image = product.media[1] %}
@@ -146,3 +142,19 @@
     </span>
   </p>
 </a>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% include 'responsive-image' with
+            image: preview_image
+            max_width: 2000,
+            max_height: 2000
+          %}
+  to: "{% include 'responsive-image' with image, image: preview_image, max_width:
+    2000, max_height: 2000 %}"
+  position: 2899..2999
+{% endcomment %}

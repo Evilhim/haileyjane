@@ -3,12 +3,24 @@
     <div class="inline-block">
     {{ 'collections.general.filter' | t }}
     <span class="font-size--xxxxs inline-block align--middle">
-      <span class="chevron-down">{% include 'svg' | icon: 'icon-chevron-down' %}</span>
-      <span class="chevron-up hide">{% include 'svg' | icon: 'icon-chevron-up' %}</span>
+      <span class="chevron-down">{% include 'svg', icon: 'icon-chevron-down' %}</span>
+      <span class="chevron-up hide">{% include 'svg', icon: 'icon-chevron-up' %}</span>
     </span>
     </div>
   </a>
   <ul class="list--reset m0 mtn1 pb3 lg--up--pb0 lg--up--pt3 md--dn--hide {{ global__basic_font_size }}" data-tag-list>
     {% include 'collection__tag-items' %}
   </ul>
-</div>
+</div>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% include 'svg' | icon: 'icon-chevron-down' %}"
+  to: "{% include 'svg', icon: 'icon-chevron-down' %}"
+  position: 350..396
+- from: "{% include 'svg' | icon: 'icon-chevron-up' %}"
+  to: "{% include 'svg', icon: 'icon-chevron-up' %}"
+  position: 440..484
+{%- endcomment -%}

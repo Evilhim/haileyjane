@@ -96,7 +96,7 @@
       <div class="max-site-width px2 lg--up--px3">
         <div class="relative">
           <a class="header__close fixed lg-up--full--w text-align--right top--0 right--0 p2 font-size--ml pointer color--active-text hv--active-accent" data-close-header tabindex="0">
-            {% include 'svg' | icon: 'icon-close' %}
+            {% include 'svg', icon: 'icon-close' %}
           </a>
         </div>
       </div>
@@ -145,7 +145,7 @@
               {% else %}
                 {% if section.settings.show_menu_icon %}
                   <button type="button" class="t--header-navigation color--{{ section_color }}-text site-header__menu-btn btn border--none font-size--m bg--transparent" aria-controls="MobileNav" aria-expanded="false" data-active-header-trigger data-active-target="navigation">
-                    <div class="left">{% include 'svg' | icon: 'icon-menu' %}</div>
+                    <div class="left">{% include 'svg', icon: 'icon-menu' %}</div>
                   </button>
                 {% else %}
                   <a class="t--header-navigation {{ header_underline_link }} font-size--m bg--transparent inline-block pointer" aria-controls="MobileNav" aria-expanded="false" data-active-header-trigger data-active-target="navigation"  tabindex="0">
@@ -263,7 +263,7 @@
               <a href="{{ routes.cart_url }}" id="CartLink" class="t--header-navigation header__link {{ header_underline_link }} font-size--m bg--transparent inline-block pointer m0 px1" {% if settings.ajax_cart_method == "modal" %}data-active-header-trigger data-active-target="cart" {% endif %}  tabindex="0"  data-top-level-item  aria-haspopup="true">
                 <div class="header__link-wrapper">
                   {% if section.settings.show_cart_icon %}
-                  <span class="cart__icon">{% include 'svg' | icon: 'icon-cart' %}</span>
+                  <span class="cart__icon">{% include 'svg', icon: 'icon-cart' %}</span>
                   {% else %}
                   {{ 'layout.cart.title' | t }}
                   {% endif %}
@@ -573,3 +573,19 @@
     ]
   }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% include 'svg' | icon: 'icon-close' %}"
+  to: "{% include 'svg', icon: 'icon-close' %}"
+  position: 5116..5155
+- from: "{% include 'svg' | icon: 'icon-menu' %}"
+  to: "{% include 'svg', icon: 'icon-menu' %}"
+  position: 8087..8125
+- from: "{% include 'svg' | icon: 'icon-cart' %}"
+  to: "{% include 'svg', icon: 'icon-cart' %}"
+  position: 16000..16038
+{% endcomment %}

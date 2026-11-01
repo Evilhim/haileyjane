@@ -13,11 +13,7 @@
       {% assign image_ratio = block.settings.image.aspect_ratio  | plus: 0 %}
           <div class="hj-image-holder image-holder mx--auto lg--up--mx--auto">
 
-            {% include 'responsive-image' with
-              image: image,
-              max_width: 2000,
-              max_height: 2000
-            %}
+            {% include 'responsive-image' with image, image: image, max_width: 2000, max_height: 2000 %}
 
           </div>
         {% else %}
@@ -65,3 +61,19 @@
 </div>
 
 
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% include 'responsive-image' with
+                  image: image,
+                  max_width: 2000,
+                  max_height: 2000
+                %}
+  to: "{% include 'responsive-image' with image, image: image, max_width: 2000, max_height:
+    2000 %}"
+  position: 654..746
+{% endcomment %}

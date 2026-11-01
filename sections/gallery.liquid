@@ -63,11 +63,7 @@
               <div class="px2 lg--up--px0  t--list-and-grid">
                 <a {% if link %}href="{{ link }}"{% endif %} target="_blank" class="color--{{ section_color }}-text">
                   {% if image %}
-                    {% include 'responsive-image' with
-                      image: image,
-                      max_width: 2500,
-                      max_height: 2500
-                    %}
+                    {% include 'responsive-image' with image, image: image, max_width: 2500, max_height: 2500 %}
                   {% else %}
                   <div class="{{ placeholder_bg }}">
                     {{ 'image' | placeholder_svg_tag }}
@@ -172,4 +168,19 @@
     }
   ]
 }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% include 'responsive-image' with
+                          image: image,
+                          max_width: 2500,
+                          max_height: 2500
+                        %}
+  to: "{% include 'responsive-image' with image, image: image, max_width: 2500, max_height:
+    2500 %}"
+  position: 2764..2856
+{%- endcomment -%}

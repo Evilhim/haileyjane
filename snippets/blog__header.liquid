@@ -5,7 +5,7 @@
         <span class="">{{ blog.title }}</span>
         {% if section.settings.show_subscribe_link %}
         <a href="{{ shop.url }}{{ blogs[blog.handle].url }}.atom" title="{{ 'general.sharing.rss_subscribe' | t }}" >
-           <span class="color--{{ section_color }}-text  hv--color--main font-size--xxxxs align--middle ml1">{% include 'svg' | icon: 'icon-rss' %}</span>
+           <span class="color--{{ section_color }}-text  hv--color--main font-size--xxxxs align--middle ml1">{% include 'svg', icon: 'icon-rss' %}</span>
         </a>
         {% endif %}
       </h1>
@@ -14,4 +14,13 @@
       {% include 'blog-sorting' %}
     </div>
   </div>
-</header>
+</header>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% include 'svg' | icon: 'icon-rss' %}"
+  to: "{% include 'svg', icon: 'icon-rss' %}"
+  position: 520..557
+{%- endcomment -%}

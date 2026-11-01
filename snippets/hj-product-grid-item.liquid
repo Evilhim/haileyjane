@@ -57,11 +57,7 @@
 
 <div class="hj-product-grid-item relative" style="z-index:2;">
     <a href="{{ product.url | within: collection }}" class="">
-      {% include 'responsive-image' with
-        image: preview_image
-        max_width: 2000,
-        max_height: 2000
-      %}
+      {% include 'responsive-image' with image, image: preview_image, max_width: 2000, max_height: 2000 %}
       <div class="hj-product-grid-item__overlay-background"></div>
       <div class="hj-product-grid-item__text">
         <h4 class="hj-product-grid-item__title">
@@ -75,3 +71,19 @@
   </div>
 {% endif %}
 
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% include 'responsive-image' with
+            image: preview_image
+            max_width: 2000,
+            max_height: 2000
+          %}
+  to: "{% include 'responsive-image' with image, image: preview_image, max_width:
+    2000, max_height: 2000 %}"
+  position: 1743..1843
+{% endcomment %}

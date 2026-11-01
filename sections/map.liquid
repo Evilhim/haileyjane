@@ -52,11 +52,7 @@
             </div>
           {% endif %}
           {% if use_image %}
-            {% include 'responsive-image' with
-              image: map_image,
-              max_width: 2000,
-              max_height: 2000
-            %}
+            {% include 'responsive-image' with image, image: map_image, max_width: 2000, max_height: 2000 %}
           {% endif %}
           {% if display_map %}
           <div class="map-wrapper">
@@ -142,4 +138,19 @@
       }
     ]
   }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% include 'responsive-image' with
+                  image: map_image,
+                  max_width: 2000,
+                  max_height: 2000
+                %}
+  to: "{% include 'responsive-image' with image, image: map_image, max_width: 2000,
+    max_height: 2000 %}"
+  position: 2292..2388
+{%- endcomment -%}

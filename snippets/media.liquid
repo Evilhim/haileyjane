@@ -33,14 +33,7 @@
           {% assign image_attributes = image_attributes | append: data_image_zoom_data %}
         {% endif %}
         {% endcomment %}
-        {% include 'responsive-image' with
-          image: media,
-          max_width: 2500,
-          max_height: 2500,
-          image_attributes: image_attributes,
-          wrapper_attributes: "data-feature-product-wrapper",
-          is_product_image: true
-        %}
+        {% include 'responsive-image' with image, image: media, max_width: 2500, max_height: 2500, image_attributes: image_attributes, wrapper_attributes: "data-feature-product-wrapper", is_product_image: true %}
       {% when 'external_video' %}
         <div class="product-single__media relative" style="padding-top: {{ 1 | divided_by: media.aspect_ratio | times: 100 }}%;">
           {{ media | external_video_tag }}
@@ -60,3 +53,23 @@
     {% endcase %}
     </div>
 </div>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% include 'responsive-image' with
+              image: media,
+              max_width: 2500,
+              max_height: 2500,
+              image_attributes: image_attributes,
+              wrapper_attributes: "data-feature-product-wrapper",
+              is_product_image: true
+            %}
+  to: '{% include ''responsive-image'' with image, image: media, max_width: 2500,
+    max_height: 2500, image_attributes: image_attributes, wrapper_attributes: "data-feature-product-wrapper",
+    is_product_image: true %}'
+  position: 2052..2256
+{% endcomment %}

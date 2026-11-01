@@ -3,11 +3,7 @@
   {% if collection.image and section.settings.show_collection_image %}
   <div class="mb3 lg--up--mb4 md--up--four-fifths mx--auto">
     {% assign image = collection.image  %}
-    {% include 'responsive-image' with
-      image: image,
-      max_width: 2000,
-      max_height: 2000
-    %}
+    {% include 'responsive-image' with image, image: image, max_width: 2000, max_height: 2000 %}
   </div>
   {% endif %}
 
@@ -27,4 +23,19 @@
     </div>
   </div>
 
-</header>
+</header>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% include 'responsive-image' with
+          image: image,
+          max_width: 2000,
+          max_height: 2000
+        %}
+  to: "{% include 'responsive-image' with image, image: image, max_width: 2000, max_height:
+    2000 %}"
+  position: 203..295
+{%- endcomment -%}

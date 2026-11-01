@@ -5,7 +5,7 @@
     <span class="block nav-open__default">
       {% if section.settings.use_menu_icon %}
         <button type="button" class="t--header-navigation site-header__menu-btn btn font-size--m bg--transparent">
-          <span class="left">{% include 'svg' | icon: 'icon-menu' %}</span>
+          <span class="left">{% include 'svg', icon: 'icon-menu' %}</span>
         </button>
       {% else %}
         <a class="t--header-navigation header__link color--{{ section_color }}-text color--header-active font-size--m bg--transparent inline-block pointer">
@@ -15,7 +15,7 @@
     </span>
     <span class="nav-open__close">
       <span class="inline-block btn font-size--m bg--transparent">
-        <span class="left">{% include 'svg' | icon: 'icon-close' %}</span>
+        <span class="left">{% include 'svg', icon: 'icon-close' %}</span>
       </span>
     </span>
   </label>
@@ -77,4 +77,16 @@
     </ul>
   </div>
 
-</noscript>
+</noscript>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% include 'svg' | icon: 'icon-menu' %}"
+  to: "{% include 'svg', icon: 'icon-menu' %}"
+  position: 331..369
+- from: "{% include 'svg' | icon: 'icon-close' %}"
+  to: "{% include 'svg', icon: 'icon-close' %}"
+  position: 829..868
+{%- endcomment -%}

@@ -34,8 +34,8 @@
               <div class="inline-block">
               {{ 'collections.general.filter' | t }}
               <span class="font-size--xxxxs inline-block align--middle">
-                <span class="chevron-down">{% include 'svg' | icon: 'icon-chevron-down' %}</span>
-                <span class="chevron-up hide">{% include 'svg' | icon: 'icon-chevron-up' %}</span>
+                <span class="chevron-down">{% include 'svg', icon: 'icon-chevron-down' %}</span>
+                <span class="chevron-up hide">{% include 'svg', icon: 'icon-chevron-up' %}</span>
               </span>
               </div>
             </a>
@@ -66,3 +66,16 @@
 
   </div>
 </section>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% include 'svg' | icon: 'icon-chevron-down' %}"
+  to: "{% include 'svg', icon: 'icon-chevron-down' %}"
+  position: 1832..1878
+- from: "{% include 'svg' | icon: 'icon-chevron-up' %}"
+  to: "{% include 'svg', icon: 'icon-chevron-up' %}"
+  position: 1932..1976
+{% endcomment %}

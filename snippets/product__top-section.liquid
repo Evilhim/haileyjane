@@ -63,11 +63,7 @@
                 <div class="md--up--mt2 md--up--flex--auto">
                   <div class="px2 md--up--px0">
                     <a href="{{ media_url }}" class="{% for variant in media.variants %}product-variant--{{ variant.id }} {% endfor %} block cursor--default md--up--pointer {{ active_class }} md--up--border--transparent md--up--active-border--{{ section_color }}-text relative" data-product-single-thumbnail data-aspectratio="{{ 1 | divided_by: image.aspect_ratio | times: 100}}" data-product-image-index="{{ forloop.index0 }}" data-thumbnail-id="{{ section.id }}-{{ media.id }}">
-                      {% include 'responsive-image' with
-                        image: media.preview_image,
-                        max_width: 600,
-                        max_height: 600
-                      %}
+                      {% include 'responsive-image' with image, image: media.preview_image, max_width: 600, max_height: 600 %}
                       {% if media.media_type == 'model' %}
                         <div class="media-badge-container absolute top--0 right--0 z1">
                           <div class="media-badge-inner relative">
@@ -257,3 +253,19 @@
     </div> <!-- end grid item -->
   </div> <!-- end grid -->
 </div>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% include 'responsive-image' with
+                            image: media.preview_image,
+                            max_width: 600,
+                            max_height: 600
+                          %}
+  to: "{% include 'responsive-image' with image, image: media.preview_image, max_width:
+    600, max_height: 600 %}"
+  position: 4061..4165
+{% endcomment %}

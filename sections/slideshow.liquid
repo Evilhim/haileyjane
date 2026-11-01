@@ -34,11 +34,7 @@
 
             <div class="image-with-text__image">
               {% if block.settings.feature_image  %}
-                {% include 'responsive-image' with
-                  image: feature_image,
-                  max_width: 2000,
-                  max_height: 2000
-                %}
+                {% include 'responsive-image' with image, image: feature_image, max_width: 2000, max_height: 2000 %}
               {% else %}
                 <div class="image-with-text__placeholder full {{ placeholder_bg }} p1 lg--up--p3">
                   <div class="image-with-text__placeholder-svg">
@@ -281,4 +277,19 @@
     }
   ]
 }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% include 'responsive-image' with
+                      image: feature_image,
+                      max_width: 2000,
+                      max_height: 2000
+                    %}
+  to: "{% include 'responsive-image' with image, image: feature_image, max_width:
+    2000, max_height: 2000 %}"
+  position: 1753..1853
+{%- endcomment -%}

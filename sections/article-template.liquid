@@ -47,11 +47,7 @@
         <div class="lg--up--pl3 wd--pt3 lg--up--inline-block lg--up--text-align--left">
           <div class="lg--up--hide pb2">
           {% unless article.image == blank %}
-            {% include 'responsive-image' with
-              image: article.image
-              max_width: 2000,
-              max_height: 2000
-            %}
+            {% include 'responsive-image' with image, image: article.image, max_width: 2000, max_height: 2000 %}
           {% endunless %}
           </div>
 
@@ -95,11 +91,7 @@
         <div class="lg--up--px4">
           <div class="md--dn--hide">
             {% unless article.image == blank %}
-              {% include 'responsive-image' with
-                image: article.image
-                max_width: 2000,
-                max_height: 2000
-              %}
+              {% include 'responsive-image' with image, image: article.image, max_width: 2000, max_height: 2000 %}
             {% endunless %}
           </div>
 
@@ -335,3 +327,28 @@
     ]
   }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% include 'responsive-image' with
+                  image: article.image
+                  max_width: 2000,
+                  max_height: 2000
+                %}
+  to: "{% include 'responsive-image' with image, image: article.image, max_width:
+    2000, max_height: 2000 %}"
+  position: 1919..2019
+- from: |-
+    {% include 'responsive-image' with
+                    image: article.image
+                    max_width: 2000,
+                    max_height: 2000
+                  %}
+  to: "{% include 'responsive-image' with image, image: article.image, max_width:
+    2000, max_height: 2000 %}"
+  position: 3894..3994
+{% endcomment %}

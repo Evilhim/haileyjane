@@ -107,11 +107,11 @@
                         <div class="ajax-qty mxn1">
                           <div class="flex font-size--s">
                             <button type="button" class="ajaxcart__qty-adjust ajaxcart__qty--minus bg--transparent border--transparent font-size--xs color--active-text" data-id="{{key}}" data-qty="{{itemMinus}}" data-line="{{line}}">
-                              {% endraw %}{% include 'svg' | icon: 'icon-minus' %}{% raw %}
+                              {% endraw %}{% include 'svg', icon: 'icon-minus' %}{% raw %}
                             </button>
                             <input type="text" name="updates[]" class="ajaxcart__qty-num border--transparent bg--transparent text-align--center full--w font-size--m color--active-text" value="{{itemQty}}" min="1" data-id="{{key}}" data-line="{{line}}" aria-label="quantity" pattern="[0-9]*" name="{{inputName}}" id="{{inputId}}">
                             <button type="button" class="ajaxcart__qty-adjust ajaxcart__qty--plus  bg--transparent border--transparent  font-size--xs color--active-text" data-id="{{key}}" data-qty="{{itemAdd}}" data-line="{{line}}">
-                              {% endraw %}{% include 'svg' | icon: 'icon-plus' %}{% raw %}
+                              {% endraw %}{% include 'svg', icon: 'icon-plus' %}{% raw %}
                             </button>
                           </div>
                         </div>
@@ -132,11 +132,11 @@
                       <div class="ajax-qty">
                         <div class="flex font-size--s ">
                           <button type="button" class="ajaxcart__qty-adjust ajaxcart__qty--minus bg--transparent border--transparent font-size--xs color--active-text" data-id="{{key}}" data-qty="{{itemMinus}}" data-line="{{line}}">
-                            {% endraw %}{% include 'svg' | icon: 'icon-minus' %}{% raw %}
+                            {% endraw %}{% include 'svg', icon: 'icon-minus' %}{% raw %}
                           </button>
                           <input type="text" name="updates[]" class="ajaxcart__qty-num border--transparent bg--transparent text-align--center full--w font-size--m color--active-text" value="{{itemQty}}" min="1" data-id="{{key}}" data-line="{{line}}" aria-label="quantity" pattern="[0-9]*" name="{{inputName}}" id="{{inputId}}">
                           <button type="button" class="ajaxcart__qty-adjust ajaxcart__qty--plus  bg--transparent border--transparent  font-size--xs color--active-text" data-id="{{key}}" data-qty="{{itemAdd}}" data-line="{{line}}">
-                            {% endraw %}{% include 'svg' | icon: 'icon-plus' %}{% raw %}
+                            {% endraw %}{% include 'svg', icon: 'icon-plus' %}{% raw %}
                           </button>
                         </div>
                       </div>
@@ -236,11 +236,11 @@
     <div class="ajaxcart__qty">
       <div class="relative font-size--s ">
         <button type="button" class="js-qty__adjust js-qty__adjust--minus bg--transparent border--transparent font-size--xs absolute top--0 left--0 full--h" data-id="{{key}}" data-qty="{{itemMinus}}">
-          {% endraw %}{% include 'svg' | icon: 'icon-minus' %}{% raw %}
+          {% endraw %}{% include 'svg', icon: 'icon-minus' %}{% raw %}
         </button>
         <input type="text" class="js-qty__num border--transparent bg--transparent text-align--center full--w font-size--m" value="{{itemQty}}" min="1" data-id="{{key}}" aria-label="quantity" pattern="[0-9]*" name="{{inputName}}" id="{{inputId}}">
         <button type="button" class="js-qty__adjust js-qty__adjust--plus  bg--transparent border--transparent  font-size--xs absolute top--0 right--0 full--h" data-id="{{key}}" data-qty="{{itemAdd}}">
-          {% endraw %}{% include 'svg' | icon: 'icon-plus' %}{% raw %}
+          {% endraw %}{% include 'svg', icon: 'icon-plus' %}{% raw %}
         </button>
       </div>
     </div>
@@ -251,13 +251,43 @@
     <div class="js-qty">
       <div class="relative font-size--s">
         <button type="button" class="js-qty__adjust js-qty__adjust--minus bg--transparent border--transparent font-size--xs absolute top--0 left--0 full--h" data-id="{{key}}" data-qty="{{itemMinus}}">
-          {% endraw %}{% include 'svg' | icon: 'icon-minus' %}{% raw %}
+          {% endraw %}{% include 'svg', icon: 'icon-minus' %}{% raw %}
         </button>
         <input type="text" class="js-qty__num border--transparent bg--transparent text-align--center full--w font-size--m" value="{{itemQty}}" min="1" data-id="{{key}}" aria-label="quantity" pattern="[0-9]*" name="{{inputName}}" id="{{inputId}}">
         <button type="button" class="js-qty__adjust js-qty__adjust--plus  bg--transparent border--transparent  font-size--xs  absolute top--0 right--0 full--h" data-id="{{key}}" data-qty="{{itemAdd}}">
-          {% endraw %}{% include 'svg' | icon: 'icon-plus' %}{% raw %}
+          {% endraw %}{% include 'svg', icon: 'icon-plus' %}{% raw %}
         </button>
       </div>
     </div>
   {% endraw %}
-  </script>
+  </script>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% include 'svg' | icon: 'icon-minus' %}"
+  to: "{% include 'svg', icon: 'icon-minus' %}"
+  position: 5475..5514
+- from: "{% include 'svg' | icon: 'icon-plus' %}"
+  to: "{% include 'svg', icon: 'icon-plus' %}"
+  position: 6167..6205
+- from: "{% include 'svg' | icon: 'icon-minus' %}"
+  to: "{% include 'svg', icon: 'icon-minus' %}"
+  position: 7337..7376
+- from: "{% include 'svg' | icon: 'icon-plus' %}"
+  to: "{% include 'svg', icon: 'icon-plus' %}"
+  position: 8021..8059
+- from: "{% include 'svg' | icon: 'icon-minus' %}"
+  to: "{% include 'svg', icon: 'icon-minus' %}"
+  position: 13291..13330
+- from: "{% include 'svg' | icon: 'icon-plus' %}"
+  to: "{% include 'svg', icon: 'icon-plus' %}"
+  position: 13828..13866
+- from: "{% include 'svg' | icon: 'icon-minus' %}"
+  to: "{% include 'svg', icon: 'icon-minus' %}"
+  position: 14290..14329
+- from: "{% include 'svg' | icon: 'icon-plus' %}"
+  to: "{% include 'svg', icon: 'icon-plus' %}"
+  position: 14828..14866
+{%- endcomment -%}

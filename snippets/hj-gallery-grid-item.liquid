@@ -28,11 +28,7 @@
 {% assign image = block.settings.image %}
   <div class="hj-product-grid-item relative" style="z-index:2;">
     <a href="{{ block.settings.link-url }}" class="">
-      {% include 'responsive-image' with
-        image: image
-        max_width: 2000,
-        max_height: 2000
-      %}
+      {% include 'responsive-image' with image, image: image, max_width: 2000, max_height: 2000 %}
       <div class="hj-product-grid-item__overlay-background"></div>
       <div class="hj-product-grid-item__text">
         <h4 class="hj-product-grid-item__title">
@@ -45,3 +41,19 @@
     </a>
   </div>
 {% endif %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% include 'responsive-image' with
+            image: image
+            max_width: 2000,
+            max_height: 2000
+          %}
+  to: "{% include 'responsive-image' with image, image: image, max_width: 2000, max_height:
+    2000 %}"
+  position: 992..1084
+{% endcomment %}

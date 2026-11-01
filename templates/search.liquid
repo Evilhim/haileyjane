@@ -69,11 +69,7 @@
                       <div class="flex items--start  mt2">
                         <div class="one-third wd--one-quarter mr1">
                           {% unless article.image == blank %}
-                            {% include 'responsive-image' with
-                              image: article.image,
-                              max_width: 2000,
-                              max_height: 2000
-                            %}
+                            {% include 'responsive-image' with image, image: article.image, max_width: 2000, max_height: 2000 %}
                           {% endunless %}
                           <noscript>
                             <img src="{{ article.image.src | img_url: 'large' }}" alt="{{ article.image.alt | escape }}" class="product__img">
@@ -119,3 +115,19 @@
 </div>
 
 {% endpaginate %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% include 'responsive-image' with
+                                  image: article.image,
+                                  max_width: 2000,
+                                  max_height: 2000
+                                %}
+  to: "{% include 'responsive-image' with image, image: article.image, max_width:
+    2000, max_height: 2000 %}"
+  position: 3359..3459
+{% endcomment %}

@@ -78,11 +78,7 @@
                   {% assign image_ratio = block.settings.image.aspect_ratio  | plus: 0 %}
                   <div class="image-holder {% if col_count_mobile == 2 or col_count_mobile == 3 %}seven-eighths mx--auto{% endif %} {% if col_count_desktop == 2 or col_count_desktop == 3 %}lg--up--five-sixths lg--up--mx--auto{% endif %}">
 
-                    {% include 'responsive-image' with
-                      image: image,
-                      max_width: 2000,
-                      max_height: 2000
-                    %}
+                    {% include 'responsive-image' with image, image: image, max_width: 2000, max_height: 2000 %}
 
                   </div>
                 {% else %}
@@ -115,11 +111,7 @@
                     {% assign image = block.settings.image %}
                     {% if image %}
                       <div class="image-holder">
-                        {% include 'responsive-image' with
-                          image: image,
-                          max_width: 2000,
-                          max_height: 2000
-                        %}
+                        {% include 'responsive-image' with image, image: image, max_width: 2000, max_height: 2000 %}
                       </div>
                     {% else %}
                       <div class="onboarding-image {{ placeholder_bg }} color--border">
@@ -184,7 +176,7 @@
                         </div>
                         <a href="//www.youtube.com/embed/{{ block.settings.video_url.id }}?autoplay=1&showinfo=0&controls=1" class="absolute top--0 left--0 full pointer modaal z1" data-modaal-type="video">
                           <div class="full flex items--center justify--center color--white-text font-size--xl md--up--font-size--xxl lg--up--font-size--xxxxxl">
-                            {% include 'svg' | icon: 'icon-play' %}
+                            {% include 'svg', icon: 'icon-play' %}
                           </div>
                         </a>
                       </div>
@@ -207,7 +199,7 @@
                         </div>
                         <a href="//player.vimeo.com/video/{{ block.settings.video_url.id }}?autoplay=1%color={{ settings.color_primary }}&title=0&byline=0" class="absolute top--0 left--0 full pointer modaal z1" data-modaal-type="video">
                           <div class="full flex items--center justify--center color--white-text font-size--xl md--up--font-size--xxl lg--up--font-size--xxxxxl">
-                            {% include 'svg' | icon: 'icon-play' %}
+                            {% include 'svg', icon: 'icon-play' %}
                           </div>
                         </a>
                       </div>
@@ -223,7 +215,7 @@
                       </div>
                       <a class="absolute top--0 left--0 full pointer z1">
                         <div class="full flex items--center justify--center color--white font-size--xl md--up--font-size--xxl lg--up--font-size--xxxxxl">
-                          {% include 'svg' | icon: 'icon-play' %}
+                          {% include 'svg', icon: 'icon-play' %}
                         </div>
                       </a>
                     </div>
@@ -294,11 +286,7 @@
 
                       {% assign image_ratio = block.settings.image.aspect_ratio  | plus: 0 %}
                       <div class="image-holder">
-                        {% include 'responsive-image' with
-                          image: image,
-                          max_width: 2000,
-                          max_height: 2000
-                        %}
+                        {% include 'responsive-image' with image, image: image, max_width: 2000, max_height: 2000 %}
                       </div>
                     </div>
                     <div class="image-with-text__content absolute full top--0 left--0 p1 z1">
@@ -345,11 +333,7 @@
                       {% if article.image %}
                         {% assign image = article.image %}
                         <div class="image-holder">
-                          {% include 'responsive-image' with
-                            image: image,
-                            max_width: 2000,
-                            max_height: 2000
-                          %}
+                          {% include 'responsive-image' with image, image: image, max_width: 2000, max_height: 2000 %}
                         </div>
                       {% endif %}
                       </a>
@@ -501,4 +485,55 @@
       </div>
     </div>
   </div>
-</section>
+</section>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% include 'responsive-image' with
+                          image: image,
+                          max_width: 2000,
+                          max_height: 2000
+                        %}
+  to: "{% include 'responsive-image' with image, image: image, max_width: 2000, max_height:
+    2000 %}"
+  position: 3980..4072
+- from: |-
+    {% include 'responsive-image' with
+                              image: image,
+                              max_width: 2000,
+                              max_height: 2000
+                            %}
+  to: "{% include 'responsive-image' with image, image: image, max_width: 2000, max_height:
+    2000 %}"
+  position: 5731..5823
+- from: "{% include 'svg' | icon: 'icon-play' %}"
+  to: "{% include 'svg', icon: 'icon-play' %}"
+  position: 10008..10046
+- from: "{% include 'svg' | icon: 'icon-play' %}"
+  to: "{% include 'svg', icon: 'icon-play' %}"
+  position: 11487..11525
+- from: "{% include 'svg' | icon: 'icon-play' %}"
+  to: "{% include 'svg', icon: 'icon-play' %}"
+  position: 12415..12453
+- from: |-
+    {% include 'responsive-image' with
+                              image: image,
+                              max_width: 2000,
+                              max_height: 2000
+                            %}
+  to: "{% include 'responsive-image' with image, image: image, max_width: 2000, max_height:
+    2000 %}"
+  position: 16503..16595
+- from: |-
+    {% include 'responsive-image' with
+                                image: image,
+                                max_width: 2000,
+                                max_height: 2000
+                              %}
+  to: "{% include 'responsive-image' with image, image: image, max_width: 2000, max_height:
+    2000 %}"
+  position: 19290..19382
+{%- endcomment -%}

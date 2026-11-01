@@ -11,11 +11,7 @@
   {% endif %}
     <div class="image-with-text__image">
       <div class="image-holder">
-        {% include 'responsive-image' with
-          image: image,
-          max_width: 2000,
-          max_height: 2000
-        %}
+        {% include 'responsive-image' with image, image: image, max_width: 2000, max_height: 2000 %}
       </div>
     </div>
   {% if text_position == 'under' %}
@@ -56,4 +52,19 @@
     </a>
   </div>
   {% endif %}
-</div>
+</div>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% include 'responsive-image' with
+              image: image,
+              max_width: 2000,
+              max_height: 2000
+            %}
+  to: "{% include 'responsive-image' with image, image: image, max_width: 2000, max_height:
+    2000 %}"
+  position: 437..529
+{%- endcomment -%}

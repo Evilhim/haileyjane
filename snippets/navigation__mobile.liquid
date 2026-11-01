@@ -10,7 +10,7 @@
             <li class="mobile-nav__item{% if link.active %} mobile-nav__item--active{% endif %}" aria-haspopup="true">
                 <a class="mobile-nav__link mobile-nav__link--sublist block p1 pointer color--active-text hv--active-accent" data-first-level-link="mobile" data-key="{{ child_list_handle }}--{{ forloop.index }}" tabindex="0"  {% if forloop.last and section.settings.show_search_sidebar == false and menus[section.settings.secondary_linklist].links == blank  and shop.customer_accounts_enabled == false  %}data-mobile-active-last-item{% endif %}>
                   <span class="align--middle">{{ link.title }}</span>
-                  <span class="font-size--m inline-block align--baseline">{% include 'svg' | icon: 'icon-chevron-right-small' %}</span>
+                  <span class="font-size--m inline-block align--baseline">{% include 'svg', icon: 'icon-chevron-right-small' %}</span>
                 </a>
             </li>
           {% else %}
@@ -79,7 +79,7 @@
 
     <div class="mobile-navigation__pane full--h full--vw left overflow--scroll relative pt4 px2">
       <button class="mobile-navigation__previous hide btn border--none bg--transparent inline-block p2 fixed top--0 left--0 font-size--ml color--active-text hv--active-accent" data-mobile-nav-previous>
-        {% include 'svg' | icon: 'icon-previous' %}
+        {% include 'svg', icon: 'icon-previous' %}
       </button>
 
       {% comment %}
@@ -152,8 +152,8 @@
                       <a href="{{ link.url }}" class="mobile-nav__link mobile-nav__link--sublist block p1 line-height--6 color--active-text hv--active-accent" data-navigation-toggle="desktop" data-key="{{ child_link_handle }}--{{ forloop.index }}" {% if forloop.first %}data-mobile-active-first-item{% endif %} {% if forloop.last%}data-mobile-active-last-item{% endif %}>
                         <span class="align--middle">{{ childlink.title }}</span>
                         <span class="font-size--m inline-block align--baseline">
-                          <span class="chevron-down">{% include 'svg' | icon: 'icon-chevron-down-small' %}</span>
-                          <span class="chevron-up hide">{% include 'svg' | icon: 'icon-chevron-up-small' %}</span>
+                          <span class="chevron-down">{% include 'svg', icon: 'icon-chevron-down-small' %}</span>
+                          <span class="chevron-up hide">{% include 'svg', icon: 'icon-chevron-up-small' %}</span>
                         </span>
                       </a>
                       <ul class="hide mobile-navigation__third-level list--reset t--header-navigation font-size--m mb2" data-toggle-nav>
@@ -181,3 +181,22 @@
 
 
 
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% include 'svg' | icon: 'icon-chevron-right-small' %}"
+  to: "{% include 'svg', icon: 'icon-chevron-right-small' %}"
+  position: 1364..1417
+- from: "{% include 'svg' | icon: 'icon-previous' %}"
+  to: "{% include 'svg', icon: 'icon-previous' %}"
+  position: 5818..5860
+- from: "{% include 'svg' | icon: 'icon-chevron-down-small' %}"
+  to: "{% include 'svg', icon: 'icon-chevron-down-small' %}"
+  position: 9579..9631
+- from: "{% include 'svg' | icon: 'icon-chevron-up-small' %}"
+  to: "{% include 'svg', icon: 'icon-chevron-up-small' %}"
+  position: 9695..9745
+{% endcomment %}

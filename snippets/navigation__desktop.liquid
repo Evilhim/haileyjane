@@ -84,8 +84,8 @@
                 <a href="{{ link.url }}" class="nav__link nav__link--sublist block p1 line-height--6 color--active-text hv--active-accent" {% if forloop.first %}data-desktop-active-first-item{% endif %} {% if forloop.last %}data-desktop-subnav-last-link{% endif %} data-navigation-toggle="desktop" data-key="{{ child_link_handle }}--{{ forloop.index }}" data-desktop-sub-link>
                   <span class="align--middle">{{ childlink.title }}</span>
                   <span class="font-size--m inline-block align--baseline">
-                    <span class="chevron-down">{% include 'svg' | icon: 'icon-chevron-down-small' %}</span>
-                    <span class="chevron-up hide">{% include 'svg' | icon: 'icon-chevron-up-small' %}</span>
+                    <span class="chevron-down">{% include 'svg', icon: 'icon-chevron-down-small' %}</span>
+                    <span class="chevron-up hide">{% include 'svg', icon: 'icon-chevron-up-small' %}</span>
                   </span>
                 </a>
                 <ul class="hide mobile-navigation__third-level list--reset t--header-navigation font-size--m mb2" data-toggle-nav>
@@ -112,3 +112,16 @@
     </div>
   {% endif %}
 {% endfor %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% include 'svg' | icon: 'icon-chevron-down-small' %}"
+  to: "{% include 'svg', icon: 'icon-chevron-down-small' %}"
+  position: 4357..4409
+- from: "{% include 'svg' | icon: 'icon-chevron-up-small' %}"
+  to: "{% include 'svg', icon: 'icon-chevron-up-small' %}"
+  position: 4467..4517
+{% endcomment %}
